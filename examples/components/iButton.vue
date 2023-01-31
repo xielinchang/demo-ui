@@ -24,6 +24,7 @@ button {
   padding: 0;
   border-radius: 4px;
   color: white;
+  outline: none;
   &:hover {
     cursor: pointer;
     background-color: rgb(58, 166, 255);
