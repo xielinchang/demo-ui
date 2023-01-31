@@ -8,5 +8,12 @@ export default defineConfig({
       input: 'examples/main.js'
     }
   },
+ /*  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "./examples/assets/scss/global.scss";',
+      }
+    }
+  }, */
   plugins: [vue()],
 })
