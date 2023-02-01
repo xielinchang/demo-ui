@@ -14,7 +14,7 @@
   </div>
 </template>
   
-  <script lang="ts" setup>
+  <script setup lang="ts" name="">
 import { computed } from '@vue/runtime-core';
 const props = defineProps({
   // 当前页数
