@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="joy-ui">
+  <div class="joy-design">
     <div class="section">
       <j-Button types="primary">按钮</j-Button>
     </div>
@@ -33,7 +33,7 @@
 </template>
 
 <style scoped lang="scss">
-.joy-ui{
+.joy-design{
   width: 100%;
   height: auto;
   display: flex;
