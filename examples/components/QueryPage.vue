@@ -116,7 +116,7 @@ const pageList = computed(() => {
         }
       }
       return firstList;
-    } else if (props.currentPage <= pageTotal && props.currentPage >= pageTotal - center) {
+    } else if (props.currentPage <= pageTotal && props.currentPage >= pageTotal - center + 1) {
       // 当前页处于靠近尾页的位置
       const firstList = [];
       if (props.pageCount === 1) {
@@ -130,7 +130,7 @@ const pageList = computed(() => {
           } else {
             firstList.push(pageTotal - i);
           }
-        }
+        }  
       }
       return firstList;
     } else {
@@ -260,14 +260,13 @@ const itemEvent = (item: any, index: number) => {
 };
 </script>
   
-  <style>
+  <style lang="scss">
 .query-page {
   width: 380px;
   height: 30px;
   display: flex;
   justify-content: center;
-}
-.page-mian-item {
+  .page-mian-item {
   box-sizing: border-box;
   text-align: center;
   cursor: pointer;
@@ -282,5 +281,7 @@ const itemEvent = (item: any, index: number) => {
   margin: 0px 10px;
   color: white;
 }
+}
+
 </style>
   
