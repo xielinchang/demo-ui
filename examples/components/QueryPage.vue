@@ -1,6 +1,14 @@
 <template>
   <div class="query-page">
-    <div class="pre-page page-mian-item" @click="prevEvent">＜</div>
+    <div
+      class="query-btn"
+      :style="{
+        width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
+        height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+      }"
+      @click="prevEvent"
+      >＜</div
+    >
     <div
       v-for="(item, index) in pageList"
       :key="index"
@@ -10,7 +18,15 @@
     >
       {{ item }}
     </div>
-    <div class="next-page page-mian-item" @click="nextEvent">＞</div>
+    <div
+      class="query-btn"
+      :style="{
+        width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
+        height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+      }"
+      @click="nextEvent"
+      >＞</div
+    >
   </div>
 </template>
   
@@ -130,7 +146,7 @@ const pageList = computed(() => {
           } else {
             firstList.push(pageTotal - i);
           }
-        }  
+        }
       }
       return firstList;
     } else {
@@ -245,9 +261,9 @@ const itemEvent = (item: any, index: number) => {
   } else if (item === '...') {
     if (index + 1 < center) {
       if (props.currentPage <= 5) {
-        emit('change-page', 1); 
-      }else{
-        emit('change-page', props.currentPage - 5); 
+        emit('change-page', 1);
+      } else {
+        emit('change-page', props.currentPage - 5);
       }
     } else {
       if (pageTotal - props.currentPage <= 5) {
@@ -267,21 +283,19 @@ const itemEvent = (item: any, index: number) => {
   display: flex;
   justify-content: center;
   .page-mian-item {
-  box-sizing: border-box;
-  text-align: center;
-  cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+  }
+  .query-btn {
+    border-radius: 4px;
+    border: 1px solid rgb(255, 162, 75);
+    background: rgb(253, 140, 1);
+    margin: 0px 10px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+  }
 }
-.pre-page,
-.next-page {
-  width: 27px;
-  height: 27px;
-  border-radius: 4px;
-  border: 1px solid rgb(255, 162, 75);
-  background: rgb(253, 140, 1);
-  margin: 0px 10px;
-  color: white;
-}
-}
-
 </style>
   

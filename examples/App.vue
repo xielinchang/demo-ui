@@ -14,19 +14,19 @@
 <template>
   <div class="joy-design">
     <div class="section">
-      <j-Button types="primary">按钮</j-Button>
+      <j-button types="primary">按钮</j-button>
     </div>
   <div class="section">
-    <j-QueryPage
+    <j-query-page
     :current-page="currentPage"
     :total="100"
     :page-size="5"
     :page-count="5"
     @change-page="changePage"
-  ></j-QueryPage>
+  ></j-query-page>
   </div>
   <div class="section">
-
+    ...
   </div>
   </div>
  
