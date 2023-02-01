@@ -1,11 +1,5 @@
+<script></script>
 
-<script>
+<template> </template>
 
-</script>
-
-<template>
-</template>
-
-
-<style>
-</style>
+<style></style>
