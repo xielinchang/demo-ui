@@ -1,6 +1,4 @@
 <script setup lang="ts" name="">
-import { computed } from "@vue/runtime-core";
-
   defineProps<{ types: string }>();
 </script>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts" name="">
-  import jdButton from './components/Button.vue';
-  import jdQueryPage from './components/QueryPage.vue'
+  import jButton from './components/Button.vue';
+  import jQueryPage from './components/QueryPage.vue'
   import {ref} from 'vue'
   //分页
     const currentPage= ref(1)
@@ -12,18 +12,18 @@
 </script>
 
 <template>
-  <div class="joy-design">
+  <div class="joy-ui">
     <div class="section">
-      <jd-Button types="primary">按钮</jd-Button>
+      <j-Button types="primary">按钮</j-Button>
     </div>
   <div class="section">
-    <jd-QueryPage
+    <j-QueryPage
     :current-page="currentPage"
     :total="100"
     :page-size="5"
     :page-count="5"
     @change-page="changePage"
-  ></jd-QueryPage>
+  ></j-QueryPage>
   </div>
   <div class="section">
 
@@ -33,7 +33,7 @@
 </template>
 
 <style scoped lang="scss">
-.joy-design{
+.joy-ui{
   width: 100%;
   height: auto;
   display: flex;
