@@ -10,16 +10,21 @@
     "type-check": "vue-tsc --noEmit",
     "prettier": "prettier --write .",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "cz": "czg"
   },
   "dependencies": {
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "babel-eslint": "^10.1.0",
+    "cz-git": "^1.4.1",
+    "czg": "^1.4.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.20.2",
@@ -39,6 +44,11 @@
     "vite": "^4.0.0",
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^1.0.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
