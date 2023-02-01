@@ -3,10 +3,12 @@
   import jdQueryPage from './components/QueryPage.vue'
   import {ref} from 'vue'
   //分页
-  const currentPage= ref(1)
+    const currentPage= ref(1)
   const changePage=(val:number)=>{
       currentPage.value=val
   }
+  
+  
 </script>
 
 <template>
