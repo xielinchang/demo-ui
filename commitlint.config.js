@@ -1,70 +1,82 @@
-// commitlint.config.js
+/* eslint-disable @typescript-eslint/no-var-requires */
+// CommonJS
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const scopes = fs
-  .readdirSync(path.resolve(__dirname, 'src'), { withFileTypes: true })
-  .filter((dirent) => dirent.isDirectory())
-  .map((dirent) => dirent.name.replace(/s$/, ''));
+const scopes = fs.readdirSync(path.resolve(__dirname, 'examples'));
 
-// precomputed scope
-const scopeComplete = execSync('git status --porcelain || true')
-  .toString()
-  .trim()
-  .split('\n')
-  .find((r) => ~r.indexOf('M  src'))
+const gitStatus = execSync('git status --porcelain || true').toString().trim().split('\n');
+
+const scopeComplete = gitStatus
+  .find((r) => ~r.indexOf('M  packages'))
   ?.replace(/(\/)/g, '%%')
-  ?.match(/src%%((\w|-)*)/)?.[1]
-  ?.replace(/s$/, '');
+  ?.match(/packages%%((\w|-)*)/)?.[1];
 
-/** @type {import('cz-git').UserConfig} */
+const subjectComplete = gitStatus
+  .find((r) => ~r.indexOf('M  packages'))
+  ?.replace(/\//g, '%%')
+  ?.match(/packages%%((\w|-)*)/)?.[1];
+
 module.exports = {
-  ignores: [(commit) => commit.includes('init')],
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'body-leading-blank': [2, 'always'],
+    // @see: https://commitlint.js.org/#/reference-rules
+    // 正文空行开头
+    'body-leading-blank': [1, 'always'],
+    // 页脚空行开头
     'footer-leading-blank': [1, 'always'],
-    'header-max-length': [2, 'always', 108],
+    // 文本长度
+    'header-max-length': [2, 'always', 100],
+    /**
+     * scope：提交范围
+     * feat(scope): feat add .....
+     *      ^^^^^
+     */
+    // scope：单词格式
+    'scope-case': [2, 'always', ['lower-case', 'upper-case', 'start-case', 'pascal-case']],
+    /**
+     * subject：commit 描述
+     * feat(scope): feat add .....
+     *              ^^^^^^^^^^^^^^
+     */
+    // subject：单词格式
+    'subject-case': [1, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
+    // subject：是否为空
     'subject-empty': [2, 'never'],
+    // subject：终止符
+    'subject-full-stop': [2, 'never', '.'],
+    /**
+     * type：commit 类型
+     * feat(scope): feat add .....
+     * ^^^^
+     */
+    // type：单词格式
+    'type-case': [2, 'always', 'lower-case'],
+    // type：是否为空
     'type-empty': [2, 'never'],
-    'subject-case': [0],
+    // type：可选值
     'type-enum': [
       2,
       'always',
       [
         'feat',
         'fix',
-        'perf',
-        'style',
         'docs',
-        'test',
+        'style',
         'refactor',
+        'perf',
+        'test',
         'build',
         'ci',
-        'chore',
         'revert',
+        'chore',
         'wip',
-        'workflow',
         'types',
-        'release',
       ],
     ],
   },
   prompt: {
-    /** @use `yarn commit :f` */
-    alias: {
-      f: 'docs: fix typos',
-      r: 'docs: update README',
-      s: 'style: update code format',
-      b: 'build: bump dependencies',
-      c: 'chore: update config',
-    },
-    customScopesAlign: !scopeComplete ? 'top' : 'bottom',
-    defaultScope: scopeComplete,
-    scopes: [...scopes, 'mock'],
-    allowEmptyIssuePrefixs: true,
-    allowCustomIssuePrefixs: true,
     messages: {
       type: '选择你要提交的类型 :',
       scope: '选择一个提交范围（可选）:',
@@ -78,78 +90,46 @@ module.exports = {
       confirmCommit: '是否提交或修改commit ?',
     },
     types: [
-      { value: 'feat', name: 'feat:      ✨ 新增功能 | A new feature', emoji: ':sparkles:' },
-      { value: 'fix', name: 'fix:       🐛 修复缺陷 | A bug fix', emoji: ':bug:' },
-      {
-        value: 'docs',
-        name: 'docs:      📝 文档更新 | Documentation only changes',
-        emoji: ':memo:',
-      },
-      {
-        value: 'style',
-        name: 'style:     💄 代码格式 | Changes that do not affect the meaning of the code',
-        emoji: ':lipstick:',
-      },
-      {
-        value: 'refactor',
-        name: 'refactor:  ♻️  代码重构 | A code change that neither fixes a bug nor adds a feature',
-        emoji: ':recycle:',
-      },
-      {
-        value: 'perf',
-        name: 'perf:      ⚡️ 性能提升 | A code change that improves performance',
-        emoji: ':zap:',
-      },
-      {
-        value: 'test',
-        name: 'test:      ✅ 测试相关 | Adding missing tests or correcting existing tests',
-        emoji: ':white_check_mark:',
-      },
+      { value: 'feat', name: 'feat:     新增功能', emoji: '✨' },
+      { value: 'fix', name: 'fix:      修复缺陷', emoji: '🐛' },
+      { value: 'docs', name: 'docs:     文档变更', emoji: '📝' },
+      { value: 'style', name: 'style:    代码格式', emoji: '💄' },
+      { value: 'refactor', name: 'refactor: 代码重构', emoji: '♻️' },
+      { value: 'perf', name: 'perf:     性能优化', emoji: '⚡️' },
+      { value: 'test', name: 'test:     添加疏漏测试或已有测试改动', emoji: '✅' },
       {
         value: 'build',
-        name: 'build:     📦️ 构建相关 | Changes that affect the build system or external dependencies',
-        emoji: ':package:',
+        name: 'build:    构建流程、外部依赖变更 (如升级 npm 包、修改打包配置等)',
+        emoji: '📦️',
       },
-      {
-        value: 'ci',
-        name: 'ci:        🎡 持续集成 | Changes to our CI configuration files and scripts',
-        emoji: ':ferris_wheel:',
-      },
-      { value: 'revert', name: 'revert:    🔨 回退代码 | Revert to a commit', emoji: ':hammer:' },
+      { value: 'ci', name: 'ci:       修改 CI 配置、脚本', emoji: '🛠' },
+      { value: 'revert', name: 'revert:   回滚 commit', emoji: '⏪️' },
       {
         value: 'chore',
-        name: 'chore:     ⏪️ 其他修改 | Other changes that do not modify src or test files',
-        emoji: ':rewind:',
+        name: 'chore:    对构建过程或辅助工具和库的更改 (不影响源文件)',
+        emoji: '🔨',
       },
+      { value: 'wip', name: 'wip:      正在开发中', emoji: '🚀' },
+      { value: 'types', name: 'types:    类型定义文件修改', emoji: '💡' },
     ],
+    // 是否允许使用Emoji
     useEmoji: true,
+    // Emoji显示位置
     emojiAlign: 'center',
-    themeColorCode: '',
-    allowCustomScopes: true,
-    allowEmptyScopes: true,
-    customScopesAlias: 'custom',
-    emptyScopesAlias: 'empty',
-    upperCaseSubject: false,
-    markBreakingChangeMode: false,
-    allowBreakingChanges: ['feat', 'fix'],
-    breaklineNumber: 100,
-    breaklineChar: '|',
-    skipQuestions: [],
-    issuePrefixs: [
-      // 如果使用 gitee 作为开发管理
-      { value: 'link', name: 'link:     链接 ISSUES 进行中' },
-      { value: 'closed', name: 'closed:   标记 ISSUES 已完成' },
-    ],
-    customIssuePrefixsAlign: 'top',
-    emptyIssuePrefixsAlias: 'skip',
-    customIssuePrefixsAlias: 'custom',
-    confirmColorize: true,
-    maxHeaderLength: Infinity,
-    maxSubjectLength: Infinity,
-    minSubjectLength: 0,
-    scopeOverrides: undefined,
-    defaultBody: '',
-    defaultIssues: '',
-    defaultSubject: '',
+
+    allowEmptyIssuePrefixs: false,
+    allowCustomIssuePrefixs: false,
+    // 范围设置
+    scopes: [...scopes, 'mock'],
+    // 范围是否可以多选
+    enableMultipleScopes: true,
+    // 多选范围后用标识符隔开
+    scopeEnumSeparator: ',',
+    //  设置 选择范围 中 为空选项(empty) 和 自定义选项(custom) 的 位置
+    customScopesAlign: !scopeComplete ? 'top' : 'bottom',
+    // 如果 defaultScope 与在选择范围列表项中的 value 相匹配就会进行星标置顶操作。
+    defaultScope: scopeComplete,
+    // 描述预设值
+    defaultSubject: subjectComplete && `[${subjectComplete}] `,
   },
 };
