@@ -3,6 +3,7 @@
     <div
       class="query-btn"
       :style="{
+        display:props.chooseShow&&props.currentPage===1?'none':'block',
         width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
         height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
       }"
@@ -21,6 +22,7 @@
     <div
       class="query-btn"
       :style="{
+        display:props.chooseShow&&props.currentPage===Math.ceil(props.total / props.pageSize)?'none':'block',
         width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
         height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
       }"
