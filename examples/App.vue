@@ -1,14 +1,12 @@
 <script setup lang="ts" name="">
   import jButton from './components/button';
-  import jQueryPage from './components/QueryPage.vue'
+  import jQueryPage from './components/queryPage'
   import {ref} from 'vue'
   //分页
     const currentPage= ref(1)
   const changePage=(val:number)=>{
       currentPage.value=val
   }
-  
-  
 </script>
 
 <template>
@@ -52,6 +50,7 @@
     box-sizing: border-box;
     margin: 0 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 50px 0;
 }

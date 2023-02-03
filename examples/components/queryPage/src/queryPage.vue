@@ -31,79 +31,11 @@
     >
   </div>
 </template>
-  
   <script setup lang="ts" name="">
 import { computed } from '@vue/runtime-core';
-const props = defineProps({
-  // 当前页数
-  currentPage: {
-    type: Number,
-    default: 1,
-  },
-  // 总条目数
-  total: {
-    type: Number,
-    default: 10,
-    required: true,
-  },
-  // 每页显示的条目个数
-  pageSize: {
-    type: Number,
-    default: 5,
-    required: true,
-  },
-  // 页码按钮数量
-  pageCount: {
-    type: Number,
-    default: 5,
-    required: true,
-  },
-  // 分页元素的尺寸
-  itemStlye: {
-    type: Object,
-    default: () => {
-      return {
-        // 元素的宽度
-        width: 27,
-        // 元素的高度
-        height: 27,
-        // 元素的圆角
-        borderRadius: 4,
-        // 元素的边框宽度
-        borderWith: 1,
-        // 元素的字体大小,粗细
-        fontSize: [14, 500],
-        // 元素的默认边框颜色
-        borderDefaultColor: '#666677',
-        // 元素的激活边框颜色
-        borderActiveColor: '#FF6000',
-        // 元素的默认背景颜色
-        backgroundColor: '#ffffff',
-        // 元素的激活背景颜色
-        backgroundActiveColor: '#FF6000',
-        // 元素的默认字体颜色
-        defaultColor: '#666666',
-        // 元素的激活字体颜色
-        activeColor: '#ffffff',
-        // 元素的间距
-        marginRight: 12,
-        // 元素边框样式
-        borderStyle: 'solid',
-      };
-    },
-  },
-  // 省略号是否需要边框  true：关闭省略号边框，false：打开省略号边框
-  borderWidthShow: {
-    type: Boolean,
-    default: false,
-  },
-  // 是否打开当处于第一页时自动隐藏上一页，处于最后一页时，自动隐藏下一页 true打开，false关闭
-  chooseShow: {
-    type: Boolean,
-    default: false,
-  },
-});
-const emit = defineEmits(['change-page']);
+import { queryPageEvent } from './queryPage'
+const props = defineProps(queryPageEvent.queryPageProps);
+const emit = defineEmits(queryPageEvent.queryPageEmit);
 // 生成一个分页数组
 const pageList = computed(() => {
   // 总的页数
@@ -278,26 +210,7 @@ const itemEvent = (item: any, index: number) => {
 };
 </script>
   
-  <style lang="scss">
-.query-page {
-  width: 380px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  .page-mian-item {
-    box-sizing: border-box;
-    text-align: center;
-    cursor: pointer;
-  }
-  .query-btn {
-    border-radius: 4px;
-    border: 1px solid rgb(255, 162, 75);
-    background: rgb(253, 140, 1);
-    margin: 0px 10px;
-    color: white;
-    text-align: center;
-    box-sizing: border-box;
-  }
-}
+<style lang="scss">
+ @import './queryPage.scss';
 </style>
   
