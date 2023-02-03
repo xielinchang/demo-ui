@@ -1,5 +1,5 @@
 <script setup lang="ts" name="">
-  import jButton from './components/Button.vue';
+  import jButton from './components/button';
   import jQueryPage from './components/QueryPage.vue'
   import {ref} from 'vue'
   //分页
@@ -14,7 +14,10 @@
 <template>
   <div class="joy-design">
     <div class="section">
-      <j-button types="primary">按钮</j-button>
+    <j-button type="primary">Primary</j-button>
+    <j-button type="primary" disabled>Primary</j-button>
+    <j-button type="primary" text>Primary</j-button>
+    <j-button size="large">Large</j-button>
     </div>
   <div class="section">
     <j-query-page
