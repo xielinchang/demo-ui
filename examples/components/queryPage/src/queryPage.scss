@@ -1,5 +1,6 @@
 .query-page {
-    width: 380px;
+    min-width: 300px;
+    width: auto;
     height: 30px;
     display: flex;
     justify-content: center;
@@ -40,5 +41,41 @@
       color: white;
       text-align: center;
       box-sizing: border-box;
+      cursor: pointer;
+    }
+    .to-page{
+      width: auto;
+      min-width: 120px;
+      position: relative;
+      height: 22px;
+      overflow: hidden;
+      display: flex;
+      justify-content: left;
+      margin-top: 5px;
+      & span{
+        font-size: 12px;
+        line-height: 22px;
+        margin: 0 8px;
+      }
+      & input{
+        width: 40px;
+        height: 22px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #aaa;
+        outline: none;
+        font-size: 12px;
+        line-height: 22px;
+        &:hover{
+          border: 1px solid rgb(0, 183, 255);
+          color: rgb(0, 126, 176);
+        }
+      }
+    }
+    .total-page,.page-size{
+      width: auto;
+      height: 22px;
+      font-size: 12px;
+      line-height: 22px;
     }
   }

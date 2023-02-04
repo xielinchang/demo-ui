@@ -1,11 +1,27 @@
 <template>
   <div class="query-page">
+    <!-- 显示总页数 -->
+    <div
+      class="total-page"
+      :style="{
+        /* 与分页器对齐 */
+        marginTop: props.itemStlye.height - 22 + 'px',
+      }"
+      v-show="props.totalShow == true"
+    >
+      共
+      {{ props.total }}
+      条
+    </div>
+    <!-- 切换一页所展示的条目 -->
+    <div class="page-size"> </div>
     <div
       class="query-btn"
       :style="{
         display: props.chooseShow && props.currentPage == 1 ? 'none' : 'block',
         width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
         height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+        lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
       }"
       @click="prevEvent"
       >＜</div
@@ -30,10 +46,29 @@
             : 'block',
         width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
         height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+        lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
       }"
       @click="nextEvent"
       >＞</div
     >
+    <!-- 跳转至第几页 -->
+    <div
+      class="to-page"
+      :style="{
+        /* 与分页器对齐 */
+        marginTop: props.itemStlye.height - 22 + 'px',
+      }"
+      v-show="props.jumperShow == true"
+    >
+      <span>前往</span>
+      <input
+        type="text"
+        @blur="handleAddNumber(toNumber)"
+        v-model="toNumber"
+        @keyup.enter.native="handleAddNumber(toNumber)"
+      />
+      <span>页</span>
+    </div>
   </div>
 </template>
 <script setup lang="ts" name="">
@@ -163,10 +198,7 @@
             ? '#666666'
             : props.itemStlye.defaultColor,
         // 元素的行高
-        lineHeight:
-          props.itemStlye.height == null
-            ? '25px'
-            : props.itemStlye.height - props.itemStlye.borderWith * 2 + 'px',
+        lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
         // 元素的字体大小
         fontSize: props.itemStlye.fontSize == null ? '14px' : props.itemStlye.fontSize[0] + 'px',
         // 元素的粗细
@@ -202,7 +234,7 @@
     if (item !== '...' && item !== props.currentPage) {
       emit('change-page', item);
     } else if (item === '...') {
-      if (index + 1 < center) {
+      if (index + 1 <= center) {
         if (props.currentPage <= 5) {
           emit('change-page', 1);
         } else {
@@ -215,6 +247,21 @@
           emit('change-page', props.currentPage + 5);
         }
       }
+    }
+  };
+  // 到第几页
+  const toNumber = 1;
+  const handleAddNumber = (toNumber: number) => {
+    // 总的页数
+    const pageTotal = Math.ceil(props.total / props.pageSize);
+    if (toNumber <= 0) {
+      toNumber = 1;
+      emit('change-page', 1);
+    } else if (toNumber > pageTotal) {
+      toNumber = pageTotal;
+      emit('change-page', pageTotal);
+    } else {
+      emit('change-page', Number(toNumber));
     }
   };
 </script>

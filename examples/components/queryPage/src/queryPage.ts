@@ -73,6 +73,16 @@ export const queryPageEvent = {
       type: Boolean,
       default: true,
     },
+    // 是否打开跳转第几页，true:打开，false，关闭
+    jumperShow: {
+      type: Boolean,
+      default: true,
+    },
+    // 是否打开总页数，true:打开，false，关闭
+    totalShow: {
+      type: Boolean,
+      default: true,
+    },
   },
   queryPageEmit: ['change-page'],
 };
