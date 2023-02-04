@@ -21,7 +21,7 @@
       <j-query-page
         style="width=100%"
         :current-page="currentPage"
-        :total="1200"
+        :total="1000"
         :page-size="6"
         :page-count="5"
         :border-width-show="true"

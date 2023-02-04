@@ -1,5 +1,8 @@
 <template>
-  <div class="query-page">
+  <div
+    class="query-page"
+    v-show="props.isOneShow === true ? (pageTotal === 1 ? false : true) : true"
+  >
     <!-- 显示总页数 -->
     <div
       class="total-page"
@@ -76,10 +79,10 @@
   import { queryPageEvent } from './queryPage';
   const props = defineProps(queryPageEvent.queryPageProps);
   const emit = defineEmits(queryPageEvent.queryPageEmit);
+  // 总的页数
+  const pageTotal = Math.ceil(props.total / props.pageSize);
   // 生成一个分页数组
   const pageList = computed(() => {
-    // 总的页数
-    const pageTotal = Math.ceil(props.total / props.pageSize);
     // 总的页数数组
     const list = [];
     for (let i = 1; i <= pageTotal; i++) {
@@ -218,8 +221,6 @@
   };
   // 下一页
   const nextEvent = () => {
-    // 总的页数
-    const pageTotal = Math.ceil(props.total / props.pageSize);
     if (props.currentPage < pageTotal) {
       emit('change-page', props.currentPage + 1);
     }
@@ -229,8 +230,6 @@
     // 按钮的中间数
     console.log(index);
     let center = Math.ceil((props.pageCount + 1) / 2);
-    // 总的页数
-    const pageTotal = Math.ceil(props.total / props.pageSize);
     if (item !== '...' && item !== props.currentPage) {
       emit('change-page', item);
     } else if (item === '...') {
@@ -253,7 +252,6 @@
   const toNumber = 1;
   const handleAddNumber = (toNumber: number) => {
     // 总的页数
-    const pageTotal = Math.ceil(props.total / props.pageSize);
     if (toNumber <= 0) {
       toNumber = 1;
       emit('change-page', 1);

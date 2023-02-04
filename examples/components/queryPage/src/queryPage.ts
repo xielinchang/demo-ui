@@ -83,6 +83,11 @@ export const queryPageEvent = {
       type: Boolean,
       default: true,
     },
+    // 是否在只有1页时隐藏，true:打开，false，关闭
+    isOneShow: {
+      type: Boolean,
+      default: true,
+    },
   },
   queryPageEmit: ['change-page'],
 };
