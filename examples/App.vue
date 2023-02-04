@@ -20,9 +20,14 @@
   <div class="section">
     <j-query-page
     :current-page="currentPage"
-    :total="100"
-    :page-size="5"
+    :total="120"
+    :page-size="6"
     :page-count="5"
+    :border-width-show="true"
+    :item-stlye="{
+        borderDefaultColor:'#ddd',
+        borderStyle: 'dotted',
+    }"
     @change-page="changePage"
   ></j-query-page>
   </div>
