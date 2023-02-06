@@ -2,6 +2,7 @@
   import { computed } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
   import { ButtonProps } from './button';
+  import JIcon from '../../icon';
 
   const props = defineProps(ButtonProps);
   const style = computed(() =>
@@ -33,11 +34,13 @@
       disabled && 'is-disabled',
       text && 'is-text',
       bg && 'is-bg',
+      iconPosition && `icon-${iconPosition}`,
     ]"
     :style="{ color: textColor, ...style }"
     :disabled="disabled"
   >
-    <div :class="[createBEM('content')]">
+  <JIcon v-if="!!icon" :name="icon" class="icon" />
+    <div v-if="!circle" :class="[createBEM('content')]">
       <slot />
     </div>
   </button>
