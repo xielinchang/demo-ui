@@ -1,13 +1,20 @@
 <script setup lang="ts" name="">
-import jButton from './components/button';
-import jIcon from './components/icon';
-import jQueryPage from './components/queryPage';
-import { ref } from 'vue';
-//分页
-const currentPage = ref(1);
-const changePage = (val: number) => {
-  currentPage.value = val;
-};
+  import jButton from './components/button';
+  import jIcon from './components/icon';
+  import jQueryPage from './components/queryPage';
+
+  import jLayout from "./components/layout";
+  import jHeader from "./components/header";
+  import jContent from "./components/content";
+  import jSider from "./components/sider";
+  import jFooter from "./components/footer";
+
+  import { ref } from 'vue';
+  //分页
+  const currentPage = ref(1);
+  const changePage = (val: number) => {
+    currentPage.value = val;
+  };
 </script>
 
 <template>
@@ -33,6 +40,31 @@ const changePage = (val: number) => {
       <j-icon name="zoom-in" color="#f44336" size="28px" />
       <j-icon name="zoom-in" color="#00c48f" size="2.5rem" />
     </djv>
+    <div class="section">
+      <j-layout>
+        <j-header>header</j-header>
+        <j-content>content</j-content>
+        <j-footer>footer</j-footer>
+      </j-layout>
+    </div>
+    <div class="section">
+      <j-layout>
+        <!-- <j-header>header</j-header> -->
+        <j-sider width="100px">sider</j-sider>
+        <j-content>content</j-content>
+        <!-- <j-footer>footer</j-footer> -->
+      </j-layout>
+    </div>
+    <div class="section">
+      <j-layout>
+        <j-header>header</j-header>
+        <j-layout>
+          <j-sider width="100px">sider</j-sider>
+          <j-content>content</j-content>
+        </j-layout>
+        <j-footer>footer</j-footer>
+      </j-layout>
+    </div>
     <div class="section"> ... </div>
   </div>
 </template>
@@ -47,7 +79,6 @@ const changePage = (val: number) => {
   position: relative;
   top: 50px;
   box-sizing: border-box;
-
   .section {
     display: flex;
     align-items: center;
@@ -59,7 +90,34 @@ const changePage = (val: number) => {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 50px 0;
+    padding: 50px 30px;
+    .j-header,
+    .j-footer,
+    .j-content,
+    .j-sider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .j-header,
+    .j-footer {
+      background-color:  rgb(82, 147, 197);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+    }
+
+    .j-sider {
+      background-color: rgb(10, 50, 81);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+    }
+    .j-content {
+      background-color: rgb(134, 191, 235);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+      // height: 150px;
+    }
   }
 }
 </style>
