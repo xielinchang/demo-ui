@@ -97,6 +97,7 @@
   };
   // 总的页数
   const pageTotal = ref(Math.ceil(props.total / props.pageSize));
+
   watch(
     () => props.pageSize,
     (newValue, oldValue) => {
@@ -127,7 +128,7 @@
             } else if (i == props.pageCount - 1) {
               firstList.push('...');
             } else {
-              firstList.push(pageTotal);
+              firstList.push(pageTotal.value);
             }
           }
         }
@@ -139,7 +140,7 @@
         // 当前页处于靠近尾页的位置
         const firstList = [];
         if (props.pageCount == 1) {
-          firstList.push(pageTotal);
+          firstList.push(pageTotal.value);
         } else {
           for (let i = props.pageCount; props.pageCount >= i && i >= 0; i--) {
             if (i > props.pageCount - 1) {
@@ -168,7 +169,7 @@
           }
         }
         firstList.push('...');
-        firstList.push(pageTotal);
+        firstList.push(pageTotal.value);
         return firstList;
       }
     } else {
@@ -254,7 +255,6 @@
   // 点击某一页
   const itemEvent = (item: any, index: number) => {
     // 按钮的中间数
-    console.log(index);
     let center = Math.ceil((props.pageCount + 1) / 2);
     if (item !== '...' && item !== props.currentPage) {
       emit('change-page', item);
@@ -267,7 +267,7 @@
         }
       } else {
         if (pageTotal.value - props.currentPage <= 5) {
-          emit('change-page', pageTotal);
+          emit('change-page', pageTotal.value);
         } else {
           emit('change-page', props.currentPage + 5);
         }

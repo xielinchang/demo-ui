@@ -90,11 +90,7 @@ export const queryPageEvent = {
     // 页面大小配置,如果不配置默认不开启这个选项
     sizeOptions: {
       type: Array,
-      default: [
-        { label: '100条/页', value: 100 },
-        { label: '200条/页', value: 200 },
-        { label: '300条/页', value: 300 },
-      ],
+      default: [],
     },
   },
   queryPageEmit: ['change-page', 'change-page-size'],

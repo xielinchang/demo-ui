@@ -52,6 +52,7 @@
   };
   // 选择选项
   const selectValue = (item: any) => {
+    console.log(item);
     emit('change-select', item.label, item.value);
     openOptions();
   };

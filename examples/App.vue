@@ -12,12 +12,20 @@
   //分页
   const currentPage = ref(1);
   const changePage = (val: number) => {
+    console.log(val);
     currentPage.value = val;
+    console.log(currentPage.value);
   };
   const pageSize = ref(100);
   const changePageSize = (val: number) => {
     pageSize.value = val;
   };
+  const sizeOptions = [
+    { label: '100条/页', value: 100 },
+    { label: '200条/页', value: 200 },
+    { label: '300条/页', value: 300 },
+  ];
+
   // 下拉选择框
   const selectedValue = ref('测试用例1');
   const changeSelect = (label: string, value: any) => {
@@ -57,6 +65,7 @@
         :page-size="pageSize"
         :page-count="5"
         :border-width-show="true"
+        :size-options="sizeOptions"
         :item-stlye="{
           width: 30,
           height: 30,
@@ -67,12 +76,12 @@
         @change-page-size="changePageSize"
       ></j-query-page>
     </div>
-    <djv class="section">
+    <div class="section">
       <j-icon name="zoom-in" color="var(--van-color-primary)" size="var(--van-font-size-large)" />
       <j-icon name="zoom-in" color="#ff9f00" :size="22" />
       <j-icon name="zoom-in" color="#f44336" size="28px" />
       <j-icon name="zoom-in" color="#00c48f" size="2.5rem" />
-    </djv>
+    </div>
     <div class="section">
       <j-select :options="options" :selected="selectedValue" @change-select="changeSelect">
       </j-select>
