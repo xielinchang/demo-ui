@@ -41,6 +41,8 @@
   import { selectEvent } from './select';
   import { ref } from 'vue';
   import { nextTick } from 'process';
+  import { createNamespace } from '../../../assets/utils/components';
+
   import jIcon from '../../icon';
   const props = defineProps(selectEvent.selectProps);
   const emit = defineEmits(selectEvent.selectEmit);
@@ -66,6 +68,11 @@
       }
     });
   });
+  const ns = createNamespace('select');
+
+defineOptions({
+  name: 'JSelect',
+});
 </script>
 <style lang="scss">
   @import './select.scss';

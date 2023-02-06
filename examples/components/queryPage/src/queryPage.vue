@@ -86,6 +86,7 @@
   import { computed } from '@vue/runtime-core';
   import { queryPageEvent } from './queryPage';
   import { ref, watch } from 'vue';
+  import { createNamespace } from '../../../assets/utils/components';
   import JSelect from '../../select';
   const props = defineProps(queryPageEvent.queryPageProps);
   const emit = defineEmits(queryPageEvent.queryPageEmit);
@@ -95,16 +96,14 @@
     selectedValue.value = label;
     emit('change-page-size', value);
   };
-  // 总的页数
+  // 监听总的页数
   const pageTotal = ref(Math.ceil(props.total / props.pageSize));
-
   watch(
     () => props.pageSize,
     (newValue, oldValue) => {
       pageTotal.value = Math.ceil(props.total / newValue);
     },
   );
-
   // 生成一个分页数组
   const pageList = computed(() => {
     // 总的页数数组
@@ -288,6 +287,10 @@
       emit('change-page', Number(toNumber));
     }
   };
+  defineOptions({
+    name: 'JQueryPage',
+  });
+  const ns = createNamespace('query-page');
 </script>
 <style lang="scss">
   @import './queryPage.scss';
