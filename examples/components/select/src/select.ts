@@ -6,8 +6,9 @@ export const selectEvent = {
       required: true,
     },
     options: {
-      type: [Array],
-      default: () => [
+      // 解决报item类型错误
+      type: Array as any,
+      default: [
         {
           label: {
             type: String,

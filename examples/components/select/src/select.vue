@@ -29,7 +29,7 @@
       <div
         :style="{ color: props.selected === item.label ? '#21A0FF' : '' }"
         class="options-item"
-        v-for="(item, index) in options"
+        v-for="(item, index) in props.options"
         :key="index"
         @click="selectValue(item)"
         >{{ item.label }}
