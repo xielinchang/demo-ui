@@ -20,6 +20,9 @@
             padding: 0 10px;
             color: #e6e6e6;
             input{
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
                 outline: none;
                 position: absolute;
                 border: none;
@@ -42,28 +45,28 @@
             line-height: 40px;
             .up{
                 transform: rotate(180deg);
-                transition: 300ms;
+                transition: 200ms;
             }
             .down{
                 transform: rotate(0deg);
-                transition: 300ms;
+                transition: 200ms;
             }
         }
         &:hover{
             border-color: #b5b5b5;
-            transition: 300ms;
+            transition: 200ms;
          }
     }
     .selecting{
         border-color: #13acff;
         &:hover{
             border-color: #019aff;
-            transition: 300ms;
+            transition: 200ms;
          }
     }
     .select-options,.select-options-close{
         transform: scaleY(1),translateY(0);
-        transition: 300ms;
+        transition: 200ms;
         width: 240px;
         box-sizing: border-box;
         height: auto;
@@ -105,7 +108,8 @@
         }
      }
      .select-options-close{
-        transform: scaleY(0) translateY(-50%);
+        transform: rotateX(90deg);
+        transform-origin: top center;
      }
 }
 

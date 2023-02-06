@@ -1,36 +1,70 @@
 <template>
   <div class="select-container">
-    <div :class="openFlag.valueOf() ? 'selecting' : 'select'" @click="openOptions()">
+    <div
+      ref="box"
+      :class="openFlag.valueOf() ? 'selecting' : 'select'"
+      @click="openOptions()"
+      :style="{ width: props.width + 'px' }"
+    >
+      <!-- 输入框 -->
       <div class="select-content">
-        <input type="text" disabled placeholder="请选择" />
+        <input type="text" v-model="props.selected" disabled placeholder="请选择" />
       </div>
       <div class="select-arrow">
         <j-icon
           :class="openFlag.valueOf() ? 'up' : 'down'"
-          name="down"
+          name="arrow-down"
           color="#cccccc"
-          size="14px"
+          size="13px"
         ></j-icon>
       </div>
     </div>
-    <div class="select-options" :class="openFlag.valueOf() ? '' : 'select-options-close'">
+    <div
+      class="select-options"
+      :style="{ width: props.width + 'px' }"
+      :class="openFlag.valueOf() ? '' : 'select-options-close'"
+      @click.stop
+    >
       <div class="select-options-icon"> </div>
-      <div class="options-item" v-for="(item, index) in options" :key="index">{{ item }} </div>
+      <div
+        :style="{ color: props.selected === item.label ? '#21A0FF' : '' }"
+        class="options-item"
+        v-for="(item, index) in options"
+        :key="index"
+        @click="selectValue(item)"
+        >{{ item.label }}
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts" name="">
   import { selectEvent } from './select';
   import { ref } from 'vue';
+  import { nextTick } from 'process';
   import jIcon from '../../icon';
   const props = defineProps(selectEvent.selectProps);
   const emit = defineEmits(selectEvent.selectEmit);
-  const options = ['测试用例1', '测试用例2', '测试用例3'];
+  // 判断选项是否打开
   const openFlag = ref(false);
+  // 打开或关闭选项框
   const openOptions = () => {
     openFlag.value = !openFlag.value;
-    console.log(openFlag.value);
   };
+  // 选择选项
+  const selectValue = (item: any) => {
+    emit('change-select', item.label, item.value);
+    openOptions();
+  };
+  const box = ref();
+  // 点击其他地方时关闭选项框
+  // 因为还没挂载,所以需要延迟使用,不然获取不到元素
+  nextTick(() => {
+    document.addEventListener('click', (e) => {
+      if (!box.value.contains(e.target) && openFlag.value == true) {
+        openOptions();
+      }
+    });
+  });
 </script>
 <style lang="scss">
   @import './select.scss';

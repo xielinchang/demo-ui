@@ -16,8 +16,16 @@
       {{ props.total }}
       条
     </div>
-    <!-- 切换一页所展示的条目 -->
-    <div class="page-size"> </div>
+    <!-- 选择一页所展示的条目 -->
+    <div class="page-size" v-show="props.sizeOptions.length > 0">
+      <j-select
+        :options="props.sizeOptions"
+        :selected="selectedValue"
+        @change-select="changeSelect"
+        :width="100"
+        style="margin: 0 10px"
+      ></j-select>
+    </div>
     <div
       class="query-btn"
       :style="{
@@ -77,15 +85,30 @@
 <script setup lang="ts" name="">
   import { computed } from '@vue/runtime-core';
   import { queryPageEvent } from './queryPage';
+  import { ref, watch } from 'vue';
+  import JSelect from '../../select';
   const props = defineProps(queryPageEvent.queryPageProps);
   const emit = defineEmits(queryPageEvent.queryPageEmit);
+  // 选择一页的条目数
+  const selectedValue = ref('100条/页');
+  const changeSelect = (label: string, value: number) => {
+    selectedValue.value = label;
+    emit('change-page-size', value);
+  };
   // 总的页数
-  const pageTotal = Math.ceil(props.total / props.pageSize);
+  const pageTotal = ref(Math.ceil(props.total / props.pageSize));
+  watch(
+    () => props.pageSize,
+    (newValue, oldValue) => {
+      pageTotal.value = Math.ceil(props.total / newValue);
+    },
+  );
+
   // 生成一个分页数组
   const pageList = computed(() => {
     // 总的页数数组
     const list = [];
-    for (let i = 1; i <= pageTotal; i++) {
+    for (let i = 1; i <= pageTotal.value; i++) {
       list.push(i);
     }
     // 展示的页数数组
@@ -109,7 +132,10 @@
           }
         }
         return firstList;
-      } else if (props.currentPage <= pageTotal && props.currentPage >= pageTotal - center + 1) {
+      } else if (
+        props.currentPage <= pageTotal.value &&
+        props.currentPage >= pageTotal.value - center + 1
+      ) {
         // 当前页处于靠近尾页的位置
         const firstList = [];
         if (props.pageCount == 1) {
@@ -121,7 +147,7 @@
             } else if (i == props.pageCount - 1) {
               firstList.push('...');
             } else {
-              firstList.push(pageTotal - i);
+              firstList.push(pageTotal.value - i);
             }
           }
         }
@@ -221,7 +247,7 @@
   };
   // 下一页
   const nextEvent = () => {
-    if (props.currentPage < pageTotal) {
+    if (props.currentPage < pageTotal.value) {
       emit('change-page', props.currentPage + 1);
     }
   };
@@ -240,7 +266,7 @@
           emit('change-page', props.currentPage - 5);
         }
       } else {
-        if (pageTotal - props.currentPage <= 5) {
+        if (pageTotal.value - props.currentPage <= 5) {
           emit('change-page', pageTotal);
         } else {
           emit('change-page', props.currentPage + 5);
@@ -255,9 +281,9 @@
     if (toNumber <= 0) {
       toNumber = 1;
       emit('change-page', 1);
-    } else if (toNumber > pageTotal) {
-      toNumber = pageTotal;
-      emit('change-page', pageTotal);
+    } else if (toNumber > pageTotal.value) {
+      toNumber = pageTotal.value;
+      emit('change-page', pageTotal.value);
     } else {
       emit('change-page', Number(toNumber));
     }

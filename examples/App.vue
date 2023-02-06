@@ -1,19 +1,33 @@
 <script setup lang="ts" name="">
-import jButton from './components/button';
-import jIcon from './components/icon';
-import jQueryPage from './components/queryPage';
-import jSelect from './components/select';
-import jLayout from './components/layout';
-import jHeader from './components/header';
-import jContent from './components/content';
-import jSider from './components/sider';
-import jFooter from './components/footer';
-import { ref } from 'vue';
-//分页
-const currentPage = ref(1);
-const changePage = (val: number) => {
-  currentPage.value = val;
-};
+  import jButton from './components/button';
+  import jIcon from './components/icon';
+  import jQueryPage from './components/queryPage';
+  import jSelect from './components/select';
+  import jLayout from './components/layout';
+  import jHeader from './components/header';
+  import jContent from './components/content';
+  import jSider from './components/sider';
+  import jFooter from './components/footer';
+  import { ref } from 'vue';
+  //分页
+  const currentPage = ref(1);
+  const changePage = (val: number) => {
+    currentPage.value = val;
+  };
+  const pageSize = ref(100);
+  const changePageSize = (val: number) => {
+    pageSize.value = val;
+  };
+  // 下拉选择框
+  const selectedValue = ref('测试用例1');
+  const changeSelect = (label: string, value: any) => {
+    selectedValue.value = label;
+  };
+  const options = [
+    { label: '测试1', value: 1 },
+    { label: '测试2', value: 2 },
+    { label: '测试3', value: 3 },
+  ];
 </script>
 
 <template>
@@ -36,13 +50,22 @@ const changePage = (val: number) => {
       </div>
     </div>
     <div class="section">
-      <j-query-page style="width=100%" :current-page="currentPage" :total="1000" :page-size="6" :page-count="5"
-        :border-width-show="true" :item-stlye="{
+      <j-query-page
+        style="width=100%"
+        :current-page="currentPage"
+        :total="2000"
+        :page-size="pageSize"
+        :page-count="5"
+        :border-width-show="true"
+        :item-stlye="{
           width: 30,
           height: 30,
           borderDefaultColor: '#ddd',
           borderStyle: 'dotted',
-        }" @change-page="changePage"></j-query-page>
+        }"
+        @change-page="changePage"
+        @change-page-size="changePageSize"
+      ></j-query-page>
     </div>
     <djv class="section">
       <j-icon name="zoom-in" color="var(--van-color-primary)" size="var(--van-font-size-large)" />
@@ -51,7 +74,8 @@ const changePage = (val: number) => {
       <j-icon name="zoom-in" color="#00c48f" size="2.5rem" />
     </djv>
     <div class="section">
-      <j-select> </j-select>
+      <j-select :options="options" :selected="selectedValue" @change-select="changeSelect">
+      </j-select>
     </div>
     <div class="section">
       <j-layout>
@@ -83,59 +107,59 @@ const changePage = (val: number) => {
 </template>
 
 <style scoped lang="scss">
-.joy-design {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  position: relative;
-  top: 50px;
-  box-sizing: border-box;
-
-  .section {
+  .joy-design {
+    width: 100%;
+    height: auto;
     display: flex;
-    align-items: center;
-    width: 650px;
-    height: 200px;
-    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-    box-sizing: border-box;
-    margin: 10px 10px;
-    display: flex;
+    justify-content: left;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 50px 0;
-    justify-content: center;
-    padding: 50px 30px;
+    position: relative;
+    top: 50px;
+    box-sizing: border-box;
 
-    .j-header,
-    .j-footer,
-    .j-content,
-    .j-sider {
+    .section {
       display: flex;
-      justify-content: center;
       align-items: center;
-    }
+      width: calc(50% - 20px);
+      height: 200px;
+      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+      box-sizing: border-box;
+      margin: 10px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px 0;
+      justify-content: center;
+      padding: 50px 20px;
 
-    .j-header,
-    .j-footer {
-      background-color: rgb(82, 147, 197);
-      // color: var(--el-text-color-primary);
-      text-align: center;
-    }
+      .j-header,
+      .j-footer,
+      .j-content,
+      .j-sider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .j-sider {
-      background-color: rgb(10, 50, 81);
-      // color: var(--el-text-color-primary);
-      text-align: center;
-    }
+      .j-header,
+      .j-footer {
+        background-color: rgb(82, 147, 197);
+        // color: var(--el-text-color-primary);
+        text-align: center;
+      }
 
-    .j-content {
-      background-color: rgb(134, 191, 235);
-      // color: var(--el-text-color-primary);
-      text-align: center;
-      // height: 150px;
+      .j-sider {
+        background-color: rgb(10, 50, 81);
+        // color: var(--el-text-color-primary);
+        text-align: center;
+      }
+
+      .j-content {
+        background-color: rgb(134, 191, 235);
+        // color: var(--el-text-color-primary);
+        text-align: center;
+        // height: 150px;
+      }
     }
   }
-}
 </style>
