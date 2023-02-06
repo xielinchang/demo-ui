@@ -1,4 +1,3 @@
-import type { PropType } from 'vue';
 export const queryPageEvent = {
   queryPageProps: {
     // 当前页数
