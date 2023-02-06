@@ -2,7 +2,17 @@
   import jButton from './components/button';
   import jIcon from './components/icon';
   import jQueryPage from './components/queryPage';
+<<<<<<< HEAD
   import jSelect from './components/select';
+=======
+
+  import jLayout from "./components/layout";
+  import jHeader from "./components/header";
+  import jContent from "./components/content";
+  import jSider from "./components/sider";
+  import jFooter from "./components/footer";
+
+>>>>>>> 93928d1df53c147d2a0d9b3de2b98f69e921e2c8
   import { ref } from 'vue';
   //分页
   const currentPage = ref(1);
@@ -42,22 +52,70 @@
       <j-icon name="zoom-in" color="#f44336" size="28px" />
       <j-icon name="zoom-in" color="#00c48f" size="2.5rem" />
     </djv>
+<<<<<<< HEAD
     <div class="section"> 
       <j-select>
         
       </j-select>
+=======
+    <div class="section">
+      <j-layout>
+        <j-header>header</j-header>
+        <j-content>content</j-content>
+        <j-footer>footer</j-footer>
+      </j-layout>
+    </div>
+    <div class="section">
+      <j-layout>
+        <!-- <j-header>header</j-header> -->
+        <j-sider width="100px">sider</j-sider>
+        <j-content>content</j-content>
+        <!-- <j-footer>footer</j-footer> -->
+      </j-layout>
+    </div>
+    <div class="section">
+      <j-layout>
+        <j-header>header</j-header>
+        <j-layout>
+          <j-sider width="100px">sider</j-sider>
+          <j-content>content</j-content>
+        </j-layout>
+        <j-footer>footer</j-footer>
+      </j-layout>
+>>>>>>> 93928d1df53c147d2a0d9b3de2b98f69e921e2c8
     </div>
     <div class="section"> ... </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+<<<<<<< HEAD
   .joy-design {
     width: 100%;
     height: auto;
+=======
+.joy-design {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  position: relative;
+  top: 50px;
+  box-sizing: border-box;
+  .section {
+    display: flex;
+    align-items: center;
+    width: 650px;
+    height: 200px;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    margin: 10px 10px;
+>>>>>>> 93928d1df53c147d2a0d9b3de2b98f69e921e2c8
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
+<<<<<<< HEAD
     position: relative;
     top: 50px;
     box-sizing: border-box;
@@ -74,6 +132,36 @@
       flex-wrap: wrap;
       justify-content: center;
       padding: 50px 0;
+=======
+    justify-content: center;
+    padding: 50px 30px;
+    .j-header,
+    .j-footer,
+    .j-content,
+    .j-sider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .j-header,
+    .j-footer {
+      background-color:  rgb(82, 147, 197);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+    }
+
+    .j-sider {
+      background-color: rgb(10, 50, 81);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+    }
+    .j-content {
+      background-color: rgb(134, 191, 235);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+      // height: 150px;
+>>>>>>> 93928d1df53c147d2a0d9b3de2b98f69e921e2c8
     }
   }
 </style>
