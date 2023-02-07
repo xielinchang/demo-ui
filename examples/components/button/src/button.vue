@@ -5,20 +5,32 @@
   import JIcon from '../../icon';
 
   const props = defineProps(ButtonProps);
-  const style = computed(() =>
+  const style = computed(() => {
     // 若传了颜色color属性则以其为准
-    props.color
-      ? {
-          '--j-button-bg-color': props.color,
-          '--j-button-text-color': 'var(--j-color-white)',
+    if (props.color) {
+      if (props.plain)
+        return {
+          '--j-button-bg-color': 'var(--j-color-white)',
+          '--j-button-text-color': props.color,
           '--j-button-border-color': props.color,
-        }
-      : {},
-  );
+        };
+      if (props.text)
+        return {
+          '--j-button-text-color': props.color,
+        };
+      return {
+        '--j-button-bg-color': props.color,
+        '--j-button-text-color': 'var(--j-color-white)',
+        '--j-button-border-color': props.color,
+      };
+    }
+    return {};
+  });
+
   const { createBEM } = createNamespace('button');
 
   defineOptions({
-    name: 'JButton',
+    name: 'jButton',
   });
 </script>
 
@@ -39,7 +51,7 @@
     :style="{ color: textColor, ...style }"
     :disabled="disabled"
   >
-  <JIcon v-if="!!icon" :name="icon" class="icon" />
+  <Jjcon v-if="!!icon" :name="icon" class="icon" />
     <div v-if="!circle" :class="[createBEM('content')]">
       <slot />
     </div>
