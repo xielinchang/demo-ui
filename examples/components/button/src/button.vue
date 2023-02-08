@@ -51,7 +51,7 @@
     :style="{ color: textColor, ...style }"
     :disabled="disabled"
   >
-  <Jjcon v-if="!!icon" :name="icon" class="icon" />
+  <JIcon v-if="!!icon" :name="icon" class="icon" />
     <div v-if="!circle" :class="[createBEM('content')]">
       <slot />
     </div>

@@ -39,8 +39,7 @@
 </template>
 <script setup lang="ts" name="">
   import { selectEvent } from './select';
-  import { ref } from 'vue';
-  import { nextTick } from 'process';
+  import { ref, nextTick  } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
 
   import jIcon from '../../icon';

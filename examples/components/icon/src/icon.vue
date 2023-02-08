@@ -15,7 +15,7 @@
     };
   });
   defineOptions({
-    name: 'JIcon',
+    name: 'jIcon',
   });
 </script>
 
