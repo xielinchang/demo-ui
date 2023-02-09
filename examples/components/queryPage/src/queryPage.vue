@@ -26,6 +26,7 @@
         style="margin: 0 10px"
       ></j-select>
     </div>
+    <!-- 上一页 -->
     <div
       class="query-btn"
       :style="{
@@ -35,8 +36,8 @@
         lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
       }"
       @click="prevEvent"
-      >＜</div
-    >
+      ><j-icon name="arrow-left" size="14px" color="white"></j-icon
+    ></div>
     <div
       v-for="(item, index) in pageList"
       :key="index"
@@ -48,6 +49,7 @@
     >
       {{ item }}
     </div>
+    <!-- 下一页 -->
     <div
       class="query-btn"
       :style="{
@@ -60,8 +62,8 @@
         lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
       }"
       @click="nextEvent"
-      >＞</div
-    >
+      ><j-icon name="arrow-right" size="14px" color="white"></j-icon
+    ></div>
     <!-- 跳转至第几页 -->
     <div
       class="to-page"
@@ -88,6 +90,7 @@
   import { ref, watch } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
   import JSelect from '../../select';
+  import JIcon from '../../icon';
   const props = defineProps(queryPageEvent.queryPageProps);
   const emit = defineEmits(queryPageEvent.queryPageEmit);
   // 选择一页的条目数
