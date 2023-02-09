@@ -24,7 +24,7 @@ export const queryPageEvent = {
       required: true,
     },
     // 分页元素的尺寸
-    itemStlye: {
+    itemStyle: {
       type: Object,
       default: () => {
         return {

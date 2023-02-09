@@ -8,7 +8,7 @@
       class="total-page"
       :style="{
         /* 与分页器对齐 */
-        marginTop: props.itemStlye.height - 22 + 'px',
+        marginTop: props.itemStyle.height - 22 + 'px',
       }"
       v-show="props.totalShow == true"
     >
@@ -27,19 +27,10 @@
       ></j-select>
     </div>
     <!-- 上一页 -->
-    <div
-      class="query-btn"
-      :style="{
-        display: props.chooseShow && props.currentPage == 1 ? 'none' : 'block',
-        width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
-        height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
-        lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
-        background: props.btnStyle.background == null ? props.btnStyle.background : '#FD8C01',
-      }"
-      @click="prevEvent"
+    <div class="query-btn" :style="btnStyle()" @click="prevEvent"
       ><j-icon
         name="arrow-left"
-        :size="props.itemStlye.fontSize - 2 + 'px'"
+        :size="props.itemStyle.fontSize[0] - 2 + 'px'"
         :color="props.btnStyle.color"
       ></j-icon
     ></div>
@@ -55,22 +46,10 @@
       {{ item }}
     </div>
     <!-- 下一页 -->
-    <div
-      class="query-btn"
-      :style="{
-        display:
-          props.chooseShow && props.currentPage == Math.ceil(props.total / props.pageSize)
-            ? 'none'
-            : 'block',
-        width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
-        height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
-        lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
-        background: props.btnStyle.background == null ? props.btnStyle.background : '#FD8C01',
-      }"
-      @click="nextEvent"
+    <div class="query-btn" :style="btnStyle()" @click="nextEvent"
       ><j-icon
         name="arrow-right"
-        :size="props.itemStlye.fontSize - 2 + 'px'"
+        :size="props.itemStyle.fontSize[0] - 2 + 'px'"
         :color="props.btnStyle.color"
       ></j-icon
     ></div>
@@ -79,7 +58,7 @@
       class="to-page"
       :style="{
         /* 与分页器对齐 */
-        marginTop: props.itemStlye.height - 22 + 'px',
+        marginTop: props.itemStyle.height - 22 + 'px',
       }"
       v-show="props.jumperShow == true"
     >
@@ -193,64 +172,76 @@
     return (item: any, index: number) => {
       return {
         // 元素的宽度
-        width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
+        width: props.itemStyle.width == null ? '27px' : props.itemStyle.width + 'px',
         // 元素的高度
-        height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+        height: props.itemStyle.height == null ? '27px' : props.itemStyle.height + 'px',
         // 元素的圆角
         borderRadius:
-          props.itemStlye.borderRadius == null ? '4px' : props.itemStlye.borderRadius + 'px',
+          props.itemStyle.borderRadius == null ? '4px' : props.itemStyle.borderRadius + 'px',
         // 元素的边框宽度
         borderWidth:
           item === '...'
             ? props.borderWidthShow
               ? '0px'
-              : props.itemStlye.borderWith == null
+              : props.itemStyle.borderWith == null
               ? '1px'
-              : props.itemStlye.borderWith + 'px'
-            : props.itemStlye.borderWidth == null
+              : props.itemStyle.borderWith + 'px'
+            : props.itemStyle.borderWidth == null
             ? '1px'
-            : props.itemStlye.borderWith + 'px',
+            : props.itemStyle.borderWith + 'px',
         // 元素的边框线条样式
-        borderStyle: props.itemStlye.borderStyle == null ? 'solid' : props.itemStlye.borderStyle,
+        borderStyle: props.itemStyle.borderStyle == null ? 'solid' : props.itemStyle.borderStyle,
         // 元素的边框颜色
         borderColor:
           item === props.currentPage
-            ? props.itemStlye.borderActiveColor == null
+            ? props.itemStyle.borderActiveColor == null
               ? '#FF6000'
-              : props.itemStlye.borderActiveColor
-            : props.itemStlye.borderDefaultColor == null
+              : props.itemStyle.borderActiveColor
+            : props.itemStyle.borderDefaultColor == null
             ? '#fff'
-            : props.itemStlye.borderDefaultColor,
+            : props.itemStyle.borderDefaultColor,
         // 元素的背景颜色
         backgroundColor:
           item === props.currentPage
-            ? props.itemStlye.backgroundActiveColor == null
+            ? props.itemStyle.backgroundActiveColor == null
               ? '#FF6000'
-              : props.itemStlye.backgroundActiveColor
-            : props.itemStlye.backgroundColor == null
+              : props.itemStyle.backgroundActiveColor
+            : props.itemStyle.backgroundColor == null
             ? '#ffffff'
-            : props.itemStlye.backgroundColor,
+            : props.itemStyle.backgroundColor,
         // 元素的字体颜色
         color:
           item === props.currentPage
-            ? props.itemStlye.activeColor == null
+            ? props.itemStyle.activeColor == null
               ? '#ffffff'
-              : props.itemStlye.activeColor
-            : props.itemStlye.defaultColor == null
+              : props.itemStyle.activeColor
+            : props.itemStyle.defaultColor == null
             ? '#666666'
-            : props.itemStlye.defaultColor,
+            : props.itemStyle.defaultColor,
         // 元素的行高
-        lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+        lineHeight: props.itemStyle.height == null ? '27px' : props.itemStyle.height + 'px',
         // 元素的字体大小
-        fontSize: props.itemStlye.fontSize == null ? '14px' : props.itemStlye.fontSize[0] + 'px',
+        fontSize: props.itemStyle.fontSize == null ? '14px' : props.itemStyle.fontSize[0] + 'px',
         // 元素的粗细
-        fontWeight: props.itemStlye.fontSize == null ? 500 : props.itemStlye.fontSize[1],
+        fontWeight: props.itemStyle.fontSize == null ? 500 : props.itemStyle.fontSize[1],
         // 元素的间距
         marginRight:
-          props.itemStlye.marginRight == null ? '12px' : props.itemStlye.marginRight + 'px',
+          props.itemStyle.marginRight == null ? '12px' : props.itemStyle.marginRight + 'px',
       };
     };
   });
+  const btnStyle = () => {
+    return {
+      display:
+        props.chooseShow && props.currentPage == Math.ceil(props.total / props.pageSize)
+          ? 'none'
+          : 'block',
+      width: props.itemStyle.width == null ? '27px' : props.itemStyle.width + 'px',
+      height: props.itemStyle.height == null ? '27px' : props.itemStyle.height + 'px',
+      lineHeight: props.itemStyle.height == null ? '27px' : props.itemStyle.height + 'px',
+      background: props.btnStyle.background == null ? props.btnStyle.background : '#FD8C01',
+    };
+  };
   // 上一页
   const prevEvent = () => {
     /* 函数名要对应，要完全相同，'-'和驼峰不能相等 */
