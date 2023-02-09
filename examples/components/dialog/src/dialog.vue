@@ -15,9 +15,10 @@
     (val) => {
       if (val) {
         doOpen();
-      } else {
-        doClose();
       }
+      // else {
+      //   doClose();
+      // }
     },
   );
 
@@ -70,7 +71,7 @@
 
 <template>
   <!-- `<Teleport>` 是一个内置组件，它可以将一个组件内部的一部分模板“传送”到该组件的 DOM 结构外层的位置去。 -->
-  <Teleport to="body">
+    <Teleport to="body">
     <Transition name="fade">
       <!-- 全屏模态层 -->
       <div v-if="modelValue" class="maskClass" @click="onModalClick">
@@ -78,8 +79,8 @@
         <!-- 单击事件将停止传递, 防止触发模态层单击事件 -->
         <div :class="[createBEM()]" :style="{ top, width }" @click.stop>
           <!-- 对话框头部 -->
-          <div :class="[createBEM('header')]">
-            <slot name="header">
+          <div :class="[createBEM('header')]" :style="{ 'text-align': center ? 'center' : '' }">
+            <slot name="header" :close="doClose">
               <span :class="[createBEM('title')]">{{ title }}</span>
               <button v-if="showClose" :class="[createBEM('headerbtn')]" @click="doClose">
                 <JIcon name="close"></JIcon>
@@ -91,8 +92,12 @@
             <slot />
           </div>
           <!-- 对话框底部 -->
-          <div :class="[createBEM('footer')]">
-            <slot name="footer"></slot>
+          <div
+            v-if="$slots.footer"
+            :class="[createBEM('footer')]"
+            :style="{ 'text-align': center ? 'center' : '' }"
+          >
+            <slot name="footer" :close="doClose"></slot>
           </div>
         </div>
       </div>
