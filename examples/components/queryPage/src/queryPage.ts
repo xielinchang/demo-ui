@@ -57,6 +57,21 @@ export const queryPageEvent = {
         };
       },
     },
+    btnStyle: {
+      type: Object,
+      default: () => {
+        return {
+          color: {
+            type: String,
+            default: '#fff',
+          },
+          background: {
+            type: String,
+            default: '#FD8C01',
+          },
+        };
+      },
+    },
     // 省略号是否需要边框  true：关闭省略号边框，false：打开省略号边框
     borderWidthShow: {
       type: Boolean,

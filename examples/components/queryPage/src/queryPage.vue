@@ -34,9 +34,14 @@
         width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
         height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
         lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+        background: props.btnStyle.background == null ? props.btnStyle.background : '#FD8C01',
       }"
       @click="prevEvent"
-      ><j-icon name="arrow-left" size="14px" color="white"></j-icon
+      ><j-icon
+        name="arrow-left"
+        :size="props.itemStlye.fontSize - 2 + 'px'"
+        :color="props.btnStyle.color"
+      ></j-icon
     ></div>
     <div
       v-for="(item, index) in pageList"
@@ -60,9 +65,14 @@
         width: props.itemStlye.width == null ? '27px' : props.itemStlye.width + 'px',
         height: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
         lineHeight: props.itemStlye.height == null ? '27px' : props.itemStlye.height + 'px',
+        background: props.btnStyle.background == null ? props.btnStyle.background : '#FD8C01',
       }"
       @click="nextEvent"
-      ><j-icon name="arrow-right" size="14px" color="white"></j-icon
+      ><j-icon
+        name="arrow-right"
+        :size="props.itemStlye.fontSize - 2 + 'px'"
+        :color="props.btnStyle.color"
+      ></j-icon
     ></div>
     <!-- 跳转至第几页 -->
     <div
