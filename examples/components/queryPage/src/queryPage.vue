@@ -31,7 +31,7 @@
       ><j-icon
         name="arrow-left"
         :size="props.itemStyle.fontSize[0] - 2 + 'px'"
-        :color="props.btnStyle.color"
+        :color="props.btnStyle.color.default"
       ></j-icon
     ></div>
     <div
@@ -50,7 +50,7 @@
       ><j-icon
         name="arrow-right"
         :size="props.itemStyle.fontSize[0] - 2 + 'px'"
-        :color="props.btnStyle.color"
+        :color="props.btnStyle.color.default"
       ></j-icon
     ></div>
     <!-- 跳转至第几页 -->

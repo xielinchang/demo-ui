@@ -1,52 +1,52 @@
 <script setup lang="ts" name="">
-  import jButton from './components/button';
-  import jIcon from './components/icon';
-  import jQueryPage from './components/queryPage';
-  import jSelect from './components/select';
-  import jLayout from './components/layout';
-  import jHeader from './components/header';
-  import jContent from './components/content';
-  import jSider from './components/sider';
-  import jFooter from './components/footer';
-  import jDialog from './components/dialog';
-  import { ref } from 'vue';
-  //分页
-  const currentPage = ref(1);
-  const changePage = (val: number) => {
-    console.log(val);
-    currentPage.value = val;
-    console.log(currentPage.value);
-  };
-  const pageSize = ref(100);
-  const changePageSize = (val: number) => {
-    pageSize.value = val;
-  };
-  const sizeOptions = [
-    { label: '100条/页', value: 100 },
-    { label: '200条/页', value: 200 },
-    { label: '300条/页', value: 300 },
-  ];
+import jButton from './components/button';
+import jIcon from './components/icon';
+import jQueryPage from './components/queryPage';
+import jSelect from './components/select';
+import jLayout from './components/layout';
+import jHeader from './components/header';
+import jContent from './components/content';
+import jSider from './components/sider';
+import jFooter from './components/footer';
+import jDialog from './components/dialog';
+import { ref } from 'vue';
+//分页
+const currentPage = ref(1);
+const changePage = (val: number) => {
+  console.log(val);
+  currentPage.value = val;
+  console.log(currentPage.value);
+};
+const pageSize = ref(100);
+const changePageSize = (val: number) => {
+  pageSize.value = val;
+};
+const sizeOptions = [
+  { label: '100条/页', value: 100 },
+  { label: '200条/页', value: 200 },
+  { label: '300条/页', value: 300 },
+];
 
-  // 下拉选择框
-  const selectedValue = ref('测试用例1');
-  const changeSelect = (label: string, value: any) => {
-    selectedValue.value = label;
-  };
-  const options = [
-    { label: '测试1', value: 1 },
-    { label: '测试2', value: 2 },
-    { label: '测试3', value: 3 },
-  ];
+// 下拉选择框
+const selectedValue = ref('测试用例1');
+const changeSelect = (label: string, value: any) => {
+  selectedValue.value = label;
+};
+const options = [
+  { label: '测试1', value: 1 },
+  { label: '测试2', value: 2 },
+  { label: '测试3', value: 3 },
+];
 
-  const dialogVisible = ref(false);
-  const handleClick = () => {
-    dialogVisible.value = true;
-  };
+const dialogVisible = ref(false);
+const handleClick = () => {
+  dialogVisible.value = true;
+};
 
-  const handleClose = (done: () => void) => {
-    // dialogVisible.value = false
-    done();
-  };
+const handleClose = (done: () => void) => {
+  // dialogVisible.value = false
+  done();
+};
 </script>
 
 <template>
@@ -69,26 +69,16 @@
       </div>
     </div>
     <div class="section">
-      <j-query-page
-        style="width=100%"
-        :current-page="currentPage"
-        :total="2000"
-        :page-size="pageSize"
-        :page-count="5"
-        :border-width-show="true"
-        :size-options="sizeOptions"
-        :item-stlye="{
+      <j-query-page style="width=100%" :current-page="currentPage" :total="2000" :page-size="pageSize" :page-count="5"
+        :border-width-show="true" :size-options="sizeOptions" :item-stlye="{
           width: 30,
           height: 30,
           borderDefaultColor: '#ddd',
           borderStyle: 'dotted',
-        }"
-        @change-page="changePage"
-        @change-page-size="changePageSize"
-      ></j-query-page>
+        }" @change-page="changePage" @change-page-size="changePageSize"></j-query-page>
     </div>
     <div class="section">
-      <j-icon name="zoom-in" color="var(--van-color-primary)" size="var(--van-font-size-large)" />
+      <j-icon name="zoom-in" color="var(--j-color-primary)" size="var(--j-font-size-large)" />
       <j-icon name="zoom-in" color="#ff9f00" :size="22" />
       <j-icon name="zoom-in" color="#f44336" size="28px" />
       <j-icon name="zoom-in" color="#00c48f" size="2.5rem" />
@@ -123,13 +113,14 @@
       </j-layout>
     </div>
     <div class="section">
-      <j-button text @click="handleClick"> click to open the Dialog </j-button>
-      <j-dialog v-model="dialogVisible" title="Tips" width="30%" :before-close="handleClose">
-        <span>This is a message</span>
+      <j-button text @click="dialogVisible = true">打开对话框</j-button>
+
+      <j-dialog v-if="dialogVisible" v-model="dialogVisible" title="标题" width="30%" draggable>
+        <span>这是一个可拖拽的对话框</span>
         <template #footer>
           <span class="dialog-footer">
-            <j-button @click="dialogVisible = false">Cancel</j-button>
-            <j-button type="primary" @click="dialogVisible = false"> Confirm </j-button>
+            <j-button @click="dialogVisible = false">取消</j-button>
+            <j-button type="primary" @click="dialogVisible = false">确认</j-button>
           </span>
         </template>
       </j-dialog>
@@ -139,63 +130,63 @@
 </template>
 
 <style scoped lang="scss">
-  .joy-design {
-    width: 100%;
-    height: auto;
+.joy-design {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  position: relative;
+  top: 50px;
+  box-sizing: border-box;
+
+  .section {
     display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-    position: relative;
-    top: 50px;
+    align-items: center;
+    width: calc(50% - 20px);
+    height: 200px;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
     box-sizing: border-box;
+    margin: 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+    justify-content: center;
+    padding: 50px 20px;
 
-    .section {
+    .j-header,
+    .j-footer,
+    .j-content,
+    .j-sider {
       display: flex;
+      justify-content: center;
       align-items: center;
-      width: calc(50% - 20px);
-      height: 200px;
-      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-      box-sizing: border-box;
-      margin: 10px 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px 0;
-      justify-content: center;
-      padding: 50px 20px;
+    }
 
-      .j-header,
-      .j-footer,
-      .j-content,
-      .j-sider {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+    .j-header,
+    .j-footer {
+      background-color: rgb(82, 147, 197);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+    }
 
-      .j-header,
-      .j-footer {
-        background-color: rgb(82, 147, 197);
-        // color: var(--el-text-color-primary);
-        text-align: center;
-      }
+    .j-sider {
+      background-color: rgb(10, 50, 81);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+    }
 
-      .j-sider {
-        background-color: rgb(10, 50, 81);
-        // color: var(--el-text-color-primary);
-        text-align: center;
-      }
-
-      .j-content {
-        background-color: rgb(134, 191, 235);
-        // color: var(--el-text-color-primary);
-        text-align: center;
-        // height: 150px;
-      }
+    .j-content {
+      background-color: rgb(134, 191, 235);
+      // color: var(--el-text-color-primary);
+      text-align: center;
+      // height: 150px;
     }
   }
+}
 
-  .dialog-footer button:first-child {
-    margin-right: 10px;
-  }
+.dialog-footer button:first-child {
+  margin-right: 10px;
+}
 </style>
