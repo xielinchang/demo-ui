@@ -10,6 +10,11 @@ import jSider from './components/sider';
 import jFooter from './components/footer';
 import jDialog from './components/dialog';
 import { ref } from 'vue';
+import { jMessage } from './components/message';
+// 消息框
+const open = (type: string) => {
+  jMessage[type]('This is a message');
+};
 //分页
 const currentPage = ref(1);
 const changePage = (val: number) => {
@@ -42,10 +47,10 @@ const dialogVisible = ref(false);
 const handleClick = () => {
   dialogVisible.value = true;
 };
-
+// 对话框 回调
 const handleClose = (done: () => void) => {
   // dialogVisible.value = false
-  done();
+  confirm('确认关闭？') && done();
 };
 </script>
 
@@ -124,6 +129,13 @@ const handleClose = (done: () => void) => {
           </span>
         </template>
       </j-dialog>
+    </div>
+    <div class="section">
+      <j-button @click="open('info')">信息</j-button>
+      <j-button type="success" @click="open('success')">成功</j-button>
+      <j-button type="warning" @click="open('warning')">警告</j-button>
+      <j-button type="danger" @click="open('error')">错误</j-button>
+      <j-button type="primary" @click="open('loading')">加载中</j-button>
     </div>
     <div class="section"> ... </div>
   </div>
