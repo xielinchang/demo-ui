@@ -9,7 +9,8 @@ import jContent from './components/content';
 import jSider from './components/sider';
 import jFooter from './components/footer';
 import jDialog from './components/dialog';
-import { ref } from 'vue';
+import JCrumb from './components/crumb';
+import { ref, reactive } from 'vue';
 //分页
 const currentPage = ref(1);
 const changePage = (val: number) => {
@@ -26,7 +27,13 @@ const sizeOptions = [
   { label: '200条/页', value: 200 },
   { label: '300条/页', value: 300 },
 ];
-
+//面包屑
+const brandsInfo = reactive([{ name: "面包1", showinfo: false },
+{ name: "面包2", showinfo: false },
+{ name: "面包3", showinfo: false },
+{ name: "面包4", showinfo: false },
+{ name: "面包5", showinfo: false },
+])
 // 下拉选择框
 const selectedValue = ref('测试用例1');
 const changeSelect = (label: string, value: any) => {
@@ -124,6 +131,9 @@ const handleClose = (done: () => void) => {
           </span>
         </template>
       </j-dialog>
+    </div>
+    <div class="section">
+      <j-crumb :brandsInfo="brandsInfo"></j-crumb>
     </div>
     <div class="section"> ... </div>
   </div>
