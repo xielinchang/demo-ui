@@ -88,7 +88,7 @@
     selectedValue.value = label;
     emit('change-page-size', value);
   };
-  // 监听总的页数
+  // 监听总的页数随页面大小变化
   const pageTotal = ref(Math.ceil(props.total / props.pageSize));
   watch(
     () => props.pageSize,

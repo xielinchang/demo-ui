@@ -27,7 +27,12 @@
     >
       <div class="select-options-icon"> </div>
       <div
-        :style="{ color: props.selected === item.label ? '#21A0FF' : '' }"
+        :style="{
+          color: props.selected === item.label ? '#21A0FF' : '',
+          fontSize: props.selected === item.label ? '14px' : '',
+          // fontWeight不兼容
+          // fontWeight: props.selected === item.label ? 700 : '',
+        }"
         class="options-item"
         v-for="(item, index) in props.options"
         :key="index"
@@ -39,7 +44,7 @@
 </template>
 <script setup lang="ts" name="">
   import { selectEvent } from './select';
-  import { ref, nextTick  } from 'vue';
+  import { ref, nextTick } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
 
   import jIcon from '../../icon';
@@ -53,7 +58,6 @@
   };
   // 选择选项
   const selectValue = (item: any) => {
-    console.log(item);
     emit('change-select', item.label, item.value);
     openOptions();
   };
@@ -69,9 +73,9 @@
   });
   const ns = createNamespace('select');
 
-defineOptions({
-  name: 'JSelect',
-});
+  defineOptions({
+    name: 'JSelect',
+  });
 </script>
 <style lang="scss">
   @import './select.scss';
