@@ -9,6 +9,7 @@ import jContent from './components/content';
 import jSider from './components/sider';
 import jFooter from './components/footer';
 import jDialog from './components/dialog';
+import jDropDown from './components/drop-down/DropDown.vue';
 import { ref, reactive } from 'vue';
 import { jMessage } from './components/message';
 import { jTooltip } from './components/tooltip';
@@ -60,6 +61,36 @@ const handleClose = (done: () => void) => {
   // dialogVisible.value = false
   confirm('确认关闭？') && done();
 };
+const data = reactive({
+  itemList: [
+    {
+      id: 1,
+      value: '1',
+      text: 'aaa'
+    },
+    {
+      id: 2,
+      value: '2',
+      text: 'abc'
+    },
+    {
+      id: 3,
+      value: '3',
+      text: 'bbb'
+    },
+    {
+      id: 4,
+      value: '4',
+      text: '选项一'
+    },
+    {
+      id: 5,
+      value: '5',
+      text: '选项二'
+    }
+  ]
+
+})
 </script>
 
 <template>
@@ -169,6 +200,11 @@ const handleClose = (done: () => void) => {
           </j-tooltip>
         </div>
       </div>
+    </div>
+    <div class="section">
+      <j-drop-down placeholder="请选择框架"  :dataList="data.itemList" width="200px">
+
+      </j-drop-down>
     </div>
     <div class="section"> ... </div>
   </div>
