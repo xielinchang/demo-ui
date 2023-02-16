@@ -8,7 +8,22 @@
     >
       <!-- 输入框 -->
       <div class="select-content">
-        <input type="text" v-model="props.selected" disabled placeholder="请选择" />
+        <!-- 默认下拉选择框 -->
+        <input
+          type="text"
+          v-if="props.type != 'search'"
+          v-model="props.selected"
+          disabled
+          placeholder="请选择"
+        />
+        <!-- 可搜索选择框 -->
+        <input
+          v-else
+          type="text"
+          v-model="props.selected"
+          @input="searchOptions($event)"
+          placeholder="请输入搜索关键字"
+        />
       </div>
       <div class="select-arrow">
         <j-icon
@@ -29,12 +44,11 @@
       <div
         :style="{
           color: props.selected === item.label ? '#21A0FF' : '',
-          fontSize: props.selected === item.label ? '14px' : '',
           // fontWeight不兼容
           // fontWeight: props.selected === item.label ? 700 : '',
         }"
         class="options-item"
-        v-for="(item, index) in props.options"
+        v-for="(item, index) in data.itemList"
         :key="index"
         @click="selectValue(item)"
         >{{ item.label }}
@@ -44,9 +58,8 @@
 </template>
 <script setup lang="ts" name="">
   import { selectEvent } from './select';
-  import { ref, nextTick } from 'vue';
+  import { ref, nextTick, watch, onMounted, reactive } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
-
   import jIcon from '../../icon';
   const props = defineProps(selectEvent.selectProps);
   const emit = defineEmits(selectEvent.selectEmit);
@@ -56,6 +69,13 @@
   const openOptions = () => {
     openFlag.value = !openFlag.value;
   };
+  // 初始化数据
+  const data = reactive({
+    itemList: [] as any,
+  });
+  onMounted(() => {
+    data.itemList = props.options;
+  });
   // 选择选项
   const selectValue = (item: any) => {
     emit('change-select', item.label, item.value);
@@ -71,6 +91,25 @@
       }
     });
   });
+  // 输入时改变被选中的值
+  const searchOptions = (e: any) => {
+    openFlag.value = true;
+    emit('change-select', e.target.value);
+  };
+  const filterData = (value: string) => {
+    data.itemList = props.options.filter((item: any) => {
+      return item.label.toLowerCase().includes(value.toLowerCase());
+    });
+  };
+  // 监听被选中的值，过滤掉不符合的选项
+  watch(
+    () => {
+      return props.selected;
+    },
+    (value: any) => {
+      filterData(value);
+    },
+  );
   const ns = createNamespace('select');
 
   defineOptions({

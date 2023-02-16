@@ -25,6 +25,11 @@ export const selectEvent = {
       type: Number,
       default: 240,
     },
+    // 搜索框类型，默认下拉选择框，search为搜索选择框
+    type: {
+      type: String,
+      default: 'search',
+    },
   },
   selectEmit: ['change-select'],
 };
