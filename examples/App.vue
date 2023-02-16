@@ -9,7 +9,6 @@
   import jSider from './components/sider';
   import jFooter from './components/footer';
   import jDialog from './components/dialog';
-  import jDropDown from './components/drop-down/DropDown.vue';
   import { ref, reactive } from 'vue';
   import { jMessage } from './components/message';
   import { jTooltip } from './components/tooltip';
@@ -43,7 +42,7 @@
     { name: '面包5', showinfo: false },
   ]);
   // 下拉选择框
-  const selectedValue = ref(null);
+  const selectedValue = ref('');
   const changeSelect = (label: string, value: any) => {
     selectedValue.value = label;
   };
@@ -62,35 +61,6 @@
     // dialogVisible.value = false
     confirm('确认关闭？') && done();
   };
-  const data = reactive({
-    itemList: [
-      {
-        id: 1,
-        value: '1',
-        text: 'aaa',
-      },
-      {
-        id: 2,
-        value: '2',
-        text: 'abc',
-      },
-      {
-        id: 3,
-        value: '3',
-        text: 'bbb',
-      },
-      {
-        id: 4,
-        value: '4',
-        text: '选项一',
-      },
-      {
-        id: 5,
-        value: '5',
-        text: '选项二',
-      },
-    ],
-  });
 </script>
 
 <template>
@@ -232,7 +202,13 @@
       </div>
     </div>
     <div class="section">
-      <j-drop-down placeholder="请选择框架" :dataList="data.itemList" width="200px"> </j-drop-down>
+      <j-select
+        :options="options"
+        type="search"
+        :selected="selectedValue"
+        @change-select="changeSelect"
+      >
+      </j-select>
     </div>
     <div class="section"> ... </div>
   </div>
