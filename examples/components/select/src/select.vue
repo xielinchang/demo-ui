@@ -14,7 +14,7 @@
           v-if="props.type != 'search'"
           v-model="props.selected"
           disabled
-          placeholder="请选择"
+          :placeholder="props.placeholder"
         />
         <!-- 可搜索选择框 -->
         <input
@@ -22,7 +22,7 @@
           type="text"
           v-model="props.selected"
           @input="searchOptions($event)"
-          placeholder="请输入搜索关键字"
+          :placeholder="props.placeholder"
         />
       </div>
       <div class="select-arrow">
@@ -53,6 +53,7 @@
         @click="selectValue(item)"
         >{{ item.label }}
       </div>
+      <div v-show="data.itemList.length == 0" class="options-null">无匹配数据</div>
     </div>
   </div>
 </template>
@@ -107,7 +108,9 @@
       return props.selected;
     },
     (value: any) => {
-      filterData(value);
+      if (props.type == 'search') {
+        filterData(value);
+      }
     },
   );
   const ns = createNamespace('select');
