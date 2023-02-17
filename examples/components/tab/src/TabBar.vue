@@ -4,7 +4,7 @@
         <div class="tabs-nav-wrap" name="header" ref="navWrap">
             <div class="tabs-inv-bar" :style="barStyle"> </div>
             <div class="tabs-tab" v-for="(item, index) in data.tabList" :key="index"
-                :style="{ '--active-color': fontColor }"
+                :style="{ '--active-color': fontColor,'--margin-right':marginRight+'px' }"
                 :class="[{ 'active': data.current === item.name }, { 'disabledStyle':findDisabled(index) }]"
                 @click="handleCurrent(index, item)" @disabled="onDisabled" ref="tabItem">
                 {{ item.label }}
@@ -48,12 +48,17 @@ const props = defineProps({
     barHeight: {
         type: String,
         default: '3px'
+    },
+    //设置相邻tab之间的距离
+    marginRight:{
+        type: Number,
+        default: 16
     }
 })
 
 //将初始的数据获取
 onMounted(() => {
-    console.log(slots.default())
+    bar.marginRight = props.marginRight
     bar.barHeight = props.barHeight
     bar.barColor = props.barColor
     navData.name = props.curActive
@@ -65,10 +70,9 @@ onMounted(() => {
             label: itemData[i].props.label,
             name: itemData[i].props.name
         })
-        // console.log(instance.refs.navWrap.children)
         if (itemData[i].props.disabled !== undefined) { data.disabledId.push(i) }
     }
-    data.current = props.curActive
+    data.current = props.curActive 
 })
 const emit = defineEmits(['disabled'])
 
@@ -111,6 +115,7 @@ const bar = reactive({
     barOffset: 0,
     barColor: '',
     barHeight: '',
+    marginRight:16
 })
 //返回tabbar的样式 ,不是个函数！！！
 const barStyle = computed(() => {
@@ -119,6 +124,7 @@ const barStyle = computed(() => {
         transform: `translate3d(${bar.barOffset}px,0px,0px)`,
         background: `${bar.barColor}`,
         height: `${bar.barHeight}`,
+        margin:`0px ${bar.marginRight}px 0px 0px`
     }
 })
 const instance = getCurrentInstance()
@@ -136,7 +142,7 @@ const updateBar = () => {
             {
                 let offset = 0
                 for (let i = 0; i < index; i++) {
-                    offset += elemTabs[i].offsetWidth + 16
+                    offset += elemTabs[i].offsetWidth + bar.marginRight
                 }
                 bar.barOffset = offset
             }
@@ -157,16 +163,15 @@ watch(() => data.current, () => {
 <style scoped lang='scss'>
 .tabs-nav-wrap {
     position: relative;
-    // border-bottom: 1px solid #dcdee2;
-    margin-bottom: 16px;
+  
 }
 
 .tabs-tab {
     position: relative;
     display: inline-block;
-    margin-right: 16px;
     padding: 8px 16px;
     cursor: pointer;
+    margin-right: var(--margin-right);
 }
 
 .tabs-inv-bar {
