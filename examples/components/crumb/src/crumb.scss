@@ -28,18 +28,14 @@
     flex-direction: row;
     justify-content: left;
     line-height: 30px;
-
+    color: white;
+    font-size: 14px;
 }
 
 .crumb .singlecrumb {
     margin-right: 5px;
-    border: 0.5px black solid;
-    border-radius: 10%;
+    border: 0.5px rgb(255, 188, 65) solid;
+    border-radius: 4px;
+    padding: 0 5px;
     background-color: rgba(253,140,1, 0.4);
-}
-
-.crumb .button {
-    border: none;
-    line-height: 30px;
-    background-color: transparent;
 }

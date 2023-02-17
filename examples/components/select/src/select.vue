@@ -38,7 +38,6 @@
       class="select-options"
       :style="{ width: props.width + 'px' }"
       :class="openFlag.valueOf() ? '' : 'select-options-close'"
-      @click.stop
     >
       <div class="select-options-icon"> </div>
       <div
