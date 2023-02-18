@@ -1,6 +1,36 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import jButton from '../../button';
+import { defineEmits } from 'vue';
+let emit = defineEmits(['submitmessage'])
+//表单
+const formdata = reactive({
+    name: '',
+    age: '',
+    year: '',
+    mouth: '',
+    day: '',
+    phone: '',
+    card: '',
+    adress: ''
+
+})
+const submit = (a) => {
+    if(a.name==''){
+        alert('姓名不能为空')
+    }else if(a.age==''){
+        alert("年龄不能为空")
+    }else if(a.card==''){
+        alert("身份证号不能为空")
+    }else if(a.phone==''){
+        alert("电话不能为空")
+    }else if(a.adress==''){
+        alert("地址不能为空")
+    }else {
+        emit('submitmessage', a);
+    }
+    
+}
 defineOptions({
     name: ' JTableform',
 });
@@ -9,30 +39,31 @@ defineOptions({
 <template>
     <div class="form">
         <div>
-            <span>姓名：</span><input type="text" class="name">
+            <span>姓名：</span><input type="text" class="name" v-model="formdata.name">
 
         </div>
         <div>
-            <span>年龄：</span><input type="text" class="age">
+            <span>年龄：</span><input type="text" class="age" v-model="formdata.age">
 
         </div>
         <div>
-            <span>出生年月：</span><input class="year">年<input class="mouth">月<input class="days">日
+            <span>出生年月：</span><input class="year" v-model="formdata.year">年<input class="mouth"
+                v-model="formdata.mouth">月<input class="days" v-model="formdata.day">日
 
         </div>
         <div>
-            <span>身份证号：</span><input type="text" class="cardnumber">
+            <span>身份证号：</span><input type="text" class="cardnumber" v-model="formdata.card">
 
         </div>
         <div>
-            <span>电话号码：</span><input type="text" class="cardnumber">
+            <span>电话号码：</span><input type="text" class="cardnumber" v-model="formdata.phone">
 
         </div>
         <div>
-            <span>家庭住址：</span><input type="text" class="cardnumber">
-            <j-button type="primary" @click="submit(inputcontent)" class="submit">确认</j-button>
+            <span>家庭住址：</span><input type="text" class="cardnumber" v-model="formdata.adress">
+            <j-button type="primary" @click="submit(formdata)" class="submit">确认</j-button>
         </div>
-        
+
     </div>
 </template>
 
@@ -46,26 +77,36 @@ defineOptions({
         width: 50px;
 
     }
-    .mouth{
+
+    .mouth {
         width: 50px;
     }
-    .days{
+
+    .days {
         width: 50px;
     }
-    .submit{
+
+    .submit {
         width: 50px;
         margin-left: 100px;
     }
-    .name{
+
+    .name {
         margin-left: 33px;
     }
-    .age{
+
+    .age {
         margin-left: 33px;
     }
-    input{
+
+    input {
         height: 20px;
         border-radius: 5px;
         border: 1px solid rgba(0, 0, 0, 0.3);
     }
-}
-</style>
+    input:focus{
+        border-color: skyblue;
+        outline-style: none;
+        box-shadow: 0 0 3px skyblue;
+    }
+}</style>

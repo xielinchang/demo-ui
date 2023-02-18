@@ -18,6 +18,7 @@ import JInput from './components/input';
 import JTableform from './components/tableform'
 import jTab from './components/tab/src/TabBar.vue'
 import jTabItem from './components/tab/src/TabItem.vue'
+import { numberLiteralTypeAnnotation } from '@babel/types';
 // 消息框
 const open = (type: string) => {
   jMessage[type]('This is a message');
@@ -58,6 +59,7 @@ const options = [
   { label: '测4', value: 4 },
   { label: 'ab5', value: 5 },
 ];
+
 const inputmessage = ref('');
 const dialogVisible = ref(false);
 const handleClick = () => {
@@ -71,6 +73,10 @@ const handleClose = (done: () => void) => {
 //tab 页面
 const handleDisabled = (e: any) => {
   console.log(e.label + '已禁用')
+}
+//表单
+const submitmessage = (a: object) => {
+  alert('姓名：' + a.name + " " + "年龄：" + a.age);
 }
 </script>
 
@@ -193,7 +199,9 @@ const handleDisabled = (e: any) => {
       <j-input :inputmessage="inputmessage"></j-input>
     </div>
     <div class="section">
-      <j-tableform></j-tableform>
+      <j-tableform @submitmessage="submitmessage"></j-tableform>
+    </div>
+    <div class="section">
       <j-tab curActive="second" @disabled="handleDisabled" fontColor="red">
         <j-tab-item label="标签一" name="first" disabled>标签一内容</j-tab-item>
         <j-tab-item label="标签二" name="second">标签二内容</j-tab-item>

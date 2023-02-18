@@ -31,8 +31,8 @@ defineOptions({
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   margin-right: 10px;
-
-  &::focus {
+  outline-style: none;
+  &:focus {
     border-color: skyblue;
     box-shadow: 0 0 3px skyblue;
   }
