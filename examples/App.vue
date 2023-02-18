@@ -15,6 +15,7 @@ import { jTooltip } from './components/tooltip';
 import JCrumb from './components/crumb';
 import JCalender from './components/calender';
 import JInput from './components/input';
+import JTableform from './components/tableform'
 // 消息框
 const open = (type: string) => {
   jMessage[type]('This is a message');
@@ -184,6 +185,9 @@ const handleClose = (done: () => void) => {
     </div>
     <div class="section">
       <j-input :inputmessage="inputmessage"></j-input>
+    </div>
+    <div class="section">
+      <j-tableform></j-tableform>
     </div>
     <div class="section"> ... </div>
   </div>

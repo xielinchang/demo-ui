@@ -28,7 +28,7 @@ defineOptions({
 .inputbox {
   width: 240px;
   height: 30px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   margin-right: 10px;
 
