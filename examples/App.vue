@@ -16,6 +16,8 @@ import JCrumb from './components/crumb';
 import JCalender from './components/calender';
 import JInput from './components/input';
 import JTableform from './components/tableform'
+import jTab from './components/tab/src/TabBar.vue'
+import jTabItem from './components/tab/src/TabItem.vue'
 // 消息框
 const open = (type: string) => {
   jMessage[type]('This is a message');
@@ -66,6 +68,10 @@ const handleClose = (done: () => void) => {
   // dialogVisible.value = false
   confirm('确认关闭？') && done();
 };
+//tab 页面
+const handleDisabled = (e: any) => {
+  console.log(e.label + '已禁用')
+}
 </script>
 
 <template>
@@ -188,6 +194,11 @@ const handleClose = (done: () => void) => {
     </div>
     <div class="section">
       <j-tableform></j-tableform>
+      <j-tab curActive="second" @disabled="handleDisabled" fontColor="red">
+        <j-tab-item label="标签一" name="first" disabled>标签一内容</j-tab-item>
+        <j-tab-item label="标签二" name="second">标签二内容</j-tab-item>
+        <j-tab-item label="标签三" name="third">标签三内容</j-tab-item>
+      </j-tab>
     </div>
     <div class="section"> ... </div>
   </div>
