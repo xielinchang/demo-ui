@@ -19,11 +19,14 @@
 </template>
 
 <script lang="ts" setup>
+import { crumbEvent } from "./crumb";
   import JIcon from '../../icon';
-  defineProps<{
-    brandsInfo: {};
-  }>();
-
+import { reactive } from "vue";
+  // defineProps<{
+  //   brandsInfo: {};
+  // }>();
+  const crumbProps = defineProps(crumbEvent.crumbProps);
+  const brandsInfo=reactive(crumbProps.brandsInfo)
   const changeCrumb = (brands: any) => {
     brands.showinfo = true;
   };
