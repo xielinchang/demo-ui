@@ -6,6 +6,14 @@
         {
           "link": "/button",
           "text": "Button 按钮"
+        },
+        {
+          "link": "/icon",
+          "text": "Icon 图标"
+        },
+        {
+          "link": "/crumb",
+          "text": "Crumb 面包屑"
         }
       ]
     }

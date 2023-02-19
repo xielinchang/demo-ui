@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <div ref="el" class="I-btton-group">
+  <div ref="el" class="j-btton-group">
     <slot></slot>
   </div>
 </template>

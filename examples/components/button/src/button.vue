@@ -2,7 +2,7 @@
   import { computed } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
   import { ButtonProps } from './button';
-  import JIcon from '../../icon';
+  import jIcon from '../../icon';
 
   const props = defineProps(ButtonProps);
   const style = computed(() => {
@@ -51,7 +51,8 @@
     :style="{ color: textColor, ...style }"
     :disabled="disabled"
   >
-  <JIcon v-if="!!icon" :name="icon" class="icon" />
+  <jIcon v-if="!!icon" :name="icon" class="icon" />
+  <jIcon v-if="loading" name="loading" class="icon is-loading" />
     <div v-if="!circle" :class="[createBEM('content')]">
       <slot />
     </div>

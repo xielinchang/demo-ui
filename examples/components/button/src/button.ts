@@ -21,6 +21,7 @@ export const ButtonProps = {
   color: String,
   disabled: Boolean,
   bg: Boolean,
+  loading: Boolean,
   iconPosition: {
     default: 'left',
     type: String as PropType<'left' | 'right'>,

@@ -1,10 +1,11 @@
-import { jButton,jButtonGroup} from '../../../../examples/components'
+import { jButton,jButtonGroup, jIcon, jCrumb } from '../../../../examples'
 import { define } from '../utils/types'
 import type { Theme as ThemeType } from 'vitepress'
+import IconList from '../../examples/icon/IconList.vue'
 
 import { globals } from '../vitepress'
 
-const components = {jButton,jButtonGroup}
+const components = {jButton,jButtonGroup, jIcon, jCrumb}
 import '../../../../examples/assets/scss/index.scss';
 
 
@@ -17,6 +18,7 @@ export default define<ThemeType>({
     Object.entries(components).forEach(([key, value]) => {
       app.component(key, value);
     });
+    app.component('IconList', IconList);
     globals.forEach(([name, comp]) => app.component(name, comp))
   }
 })

@@ -3,10 +3,10 @@
 ## 安装
 ```javascript
 import { createApp } from 'vue';
-import { ICrumb } from 'xm-components';
+import { jCrumb } from 'joyDesign';
 
 const app = createApp();
-app.use(ICrumb);
+app.use(jCrumb);
 ```
 
 ## 面包屑
