@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: JoyDesign
-  text: 下一代的前端组件库
+  text: vue前端组件库
   tagline: 基于 Vue 3，面向设计师和开发者的组件库
   image:
     src: /images/logo-rect.png
