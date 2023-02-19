@@ -6,7 +6,7 @@ import { createApp } from 'vue';
 import { jButton } from 'joyDesign';
 
 const app = createApp();
-app.use(IButton);
+app.use(jButton);
 ```
 
 ## 常用按钮

@@ -4,7 +4,6 @@ import type { Theme as ThemeType } from 'vitepress'
 import IconList from '../../examples/icon/IconList.vue'
 
 import { globals } from '../vitepress'
-
 const components = {jButton,jButtonGroup, jIcon, jCrumb}
 import '../../../../examples/assets/scss/index.scss';
 

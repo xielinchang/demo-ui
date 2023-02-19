@@ -9,10 +9,6 @@ export const config: UserConfig = {
   description: 'a Vue 3 based component library for designers and developers',
   themeConfig: {
     logo: '/images/logo.png',
-    footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2022-PRESENT Joyer and Joy contributors'
-    },
     algolia: {
       apiKey: 'your_api_key',
       indexName: 'index_name'

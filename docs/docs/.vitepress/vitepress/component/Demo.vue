@@ -83,7 +83,7 @@ function toggleSourceVisible() {
   }
 }
 .example {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 3px;
   .op-btns {
     padding: 0.5rem;
@@ -96,13 +96,13 @@ function toggleSourceVisible() {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--vp-c-divider);
     height: 44px;
     box-sizing: border-box;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     margin-top: -1px;
-    color: var(--van-text-color-secondary);
+    color: var(--vp-c-brand-lighter);
     cursor: pointer;
     position: sticky;
     left: 0;
@@ -111,7 +111,7 @@ function toggleSourceVisible() {
     z-index: 10;
 
     &:hover {
-      color: var(--van-color-primary);
+      color: var(--vp-c-brand);
     }
   }
   .example-source-wrapper {
@@ -127,7 +127,7 @@ function toggleSourceVisible() {
   height: 1px;
   width: 100%;
   margin: 0px 0;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 </style>
