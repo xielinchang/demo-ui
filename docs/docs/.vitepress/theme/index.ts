@@ -1,11 +1,11 @@
-import { jButton,jButtonGroup, jIcon, jCrumb } from '../../../../examples'
+import { jButton,jButtonGroup, jIcon, jCrumb,JQueryPage } from '../../../../examples'
 import { define } from '../utils/types'
 import type { Theme as ThemeType } from 'vitepress'
 import IconList from '../../examples/icon/IconList.vue'
 
 import { globals } from '../vitepress'
 
-const components = {jButton,jButtonGroup, jIcon, jCrumb}
+const components = {jButton,jButtonGroup, jIcon, jCrumb,JQueryPage}
 import '../../../../examples/assets/scss/index.scss';
 
 

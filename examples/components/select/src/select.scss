@@ -28,6 +28,7 @@
                 border: none;
                 background-color: white;
                 line-height: 40px;
+                color: #606266;
                 font-size: 13px;
                 cursor: pointer;
                 &::placeholder{
@@ -42,7 +43,7 @@
             right: 0;
             top: 0;
             text-align: center;
-            line-height: 40px;
+            line-height: 38px;
             .up{
                 transform: rotate(180deg);
                 transition: 200ms;

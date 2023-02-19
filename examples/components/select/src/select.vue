@@ -4,7 +4,7 @@
       ref="box"
       :class="openFlag.valueOf() ? 'selecting' : 'select'"
       @click="openOptions()"
-      :style="{ width: props.width + 'px' }"
+      :style="{ width: props.width + 'px', height: props.height + 'px' }"
     >
       <!-- 输入框 -->
       <div class="select-content">
@@ -25,7 +25,12 @@
           :placeholder="props.placeholder"
         />
       </div>
-      <div class="select-arrow">
+      <div
+        class="select-arrow"
+        :style="{
+          lineHeight: props.height + 2 + 'px',
+        }"
+      >
         <j-icon
           :class="openFlag.valueOf() ? 'up' : 'down'"
           name="arrow-down"

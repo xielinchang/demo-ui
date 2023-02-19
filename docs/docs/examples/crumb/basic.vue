@@ -1,6 +1,5 @@
 <template>
-
-    <div>
-        <j-crumb></j-crumb>
-    </div>
+  <div>
+    <j-crumb></j-crumb>
+  </div>
 </template>

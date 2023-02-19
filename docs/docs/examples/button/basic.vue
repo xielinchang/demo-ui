@@ -1,4 +1,4 @@
-class="mb-4<template>
+<template>
   <div class="mb-4">
     <j-button>Default</j-button>
     <j-button type="primary">Primary</j-button>

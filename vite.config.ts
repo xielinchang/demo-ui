@@ -9,13 +9,5 @@ export default defineConfig({
       input: 'examples/main.js',
     },
   },
-  /* 全局引入css */
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: '@import "./examples/assets/scss/global.scss";',
-  //     }
-  //   }
-  // },
   plugins: [vue(), DefineOptions()],
 });

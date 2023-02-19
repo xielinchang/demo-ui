@@ -20,7 +20,7 @@ export const queryPageEvent = {
     // 页码按钮数量
     pageCount: {
       type: Number,
-      default: 5,
+      default: 6,
       required: true,
     },
     // 分页元素的尺寸
@@ -29,13 +29,13 @@ export const queryPageEvent = {
       default: () => {
         return {
           // 元素的宽度
-          width: 27,
+          width: 30,
           // 元素的高度
-          height: 27,
+          height: 30,
           // 元素的圆角
           borderRadius: 4,
           // 元素的边框宽度
-          borderWith: 1,
+          borderWidth: 1,
           // 元素的字体大小,粗细
           fontSize: [16, 500],
           // 元素的默认边框颜色
@@ -72,11 +72,6 @@ export const queryPageEvent = {
         };
       },
     },
-    // 省略号是否需要边框  true：关闭省略号边框，false：打开省略号边框
-    borderWidthShow: {
-      type: Boolean,
-      default: false,
-    },
     // 是否打开当处于第一页时自动隐藏上一页，处于最后一页时，自动隐藏下一页 true打开，false关闭
     chooseShow: {
       type: Boolean,
@@ -90,12 +85,12 @@ export const queryPageEvent = {
     // 是否打开跳转第几页，true:打开，false，关闭
     jumperShow: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     // 是否打开总页数，true:打开，false，关闭
     totalShow: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     // 是否在只有1页时隐藏，true:打开，false，关闭
     isOneShow: {

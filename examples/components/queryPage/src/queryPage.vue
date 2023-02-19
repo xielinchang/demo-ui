@@ -23,16 +23,13 @@
         :selected="selectedValue"
         @change-select="changeSelect"
         :width="100"
+        :height="30"
         style="margin: 0 10px"
       ></j-select>
     </div>
     <!-- 上一页 -->
     <div class="query-btn" :style="btnStyle()" @click="prevEvent"
-      ><j-icon
-        name="arrow-left"
-        :size="props.itemStyle.fontSize[0] - 2 + 'px'"
-        :color="props.btnStyle.color.default"
-      ></j-icon
+      ><j-icon name="arrow-left" :color="props.btnStyle.color"></j-icon
     ></div>
     <div
       v-for="(item, index) in pageList"
@@ -47,11 +44,7 @@
     </div>
     <!-- 下一页 -->
     <div class="query-btn" :style="btnStyle()" @click="nextEvent"
-      ><j-icon
-        name="arrow-right"
-        :size="props.itemStyle.fontSize[0] - 2 + 'px'"
-        :color="props.btnStyle.color.default"
-      ></j-icon
+      ><j-icon name="arrow-right" :color="props.btnStyle.color"></j-icon
     ></div>
     <!-- 跳转至第几页 -->
     <div
@@ -74,9 +67,8 @@
   </div>
 </template>
 <script setup lang="ts" name="">
-  import { computed } from '@vue/runtime-core';
   import { queryPageEvent } from './queryPage';
-  import { ref, watch } from 'vue';
+  import { ref, watch, computed } from 'vue';
   import { createNamespace } from '../../../assets/utils/components';
   import JSelect from '../../select';
   import JIcon from '../../icon';
@@ -180,15 +172,7 @@
           props.itemStyle.borderRadius == null ? '4px' : props.itemStyle.borderRadius + 'px',
         // 元素的边框宽度
         borderWidth:
-          item === '...'
-            ? props.borderWidthShow
-              ? '0px'
-              : props.itemStyle.borderWith == null
-              ? '1px'
-              : props.itemStyle.borderWith + 'px'
-            : props.itemStyle.borderWidth == null
-            ? '1px'
-            : props.itemStyle.borderWith + 'px',
+          props.itemStyle.borderWidth == null ? '1px' : props.itemStyle.borderWidth + 'px',
         // 元素的边框线条样式
         borderStyle: props.itemStyle.borderStyle == null ? 'solid' : props.itemStyle.borderStyle,
         // 元素的边框颜色
@@ -238,8 +222,8 @@
           : 'block',
       width: props.itemStyle.width == null ? '27px' : props.itemStyle.width + 'px',
       height: props.itemStyle.height == null ? '27px' : props.itemStyle.height + 'px',
-      lineHeight: props.itemStyle.height == null ? '27px' : props.itemStyle.height + 'px',
-      background: props.btnStyle.background == null ? props.btnStyle.background : '#FD8C01',
+      lineHeight: props.itemStyle.height == null ? '24px' : props.itemStyle.height + 3 + 'px',
+      background: props.btnStyle.background == null ? '#FD8C01 ' : props.btnStyle.background,
     };
   };
   // 上一页
