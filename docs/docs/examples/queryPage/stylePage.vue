@@ -18,14 +18,14 @@
         height: 30,
         borderDefaultColor: '#fff',
         borderActiveColor: '#ada',
-        borderStyle: 'dotted',
-        fontSize: [18, 700],
-        backgroundActiveColor: '#faf',
-        backgroundColor: '#faf',
+        defaultColor: '#D16A9E',
+        fontSize: [18, 600],
+        backgroundActiveColor: '#56C1FE',
+        backgroundColor: '#56C1FD',
       }"
       :btn-style="{
         color: '#fff',
-        background: '#129646',
+        background: '#51CAF3',
       }"
       :page-size="pageSize"
       @change-page="changePage"

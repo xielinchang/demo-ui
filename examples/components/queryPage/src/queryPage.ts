@@ -97,7 +97,7 @@ export const queryPageEvent = {
       type: Boolean,
       default: true,
     },
-    // 页面大小配置,如果不配置默认不开启这个选项
+    // 页面大小配置
     sizeOptions: {
       type: Array,
       default: [],
