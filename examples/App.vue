@@ -1,83 +1,84 @@
 <script setup lang="ts" name="">
-import jButton from './components/button';
-import jIcon from './components/icon';
-import jQueryPage from './components/queryPage';
-import jSelect from './components/select';
-import jLayout from './components/layout';
-import jHeader from './components/header';
-import jContent from './components/content';
-import jSider from './components/sider';
-import jFooter from './components/footer';
-import jDialog from './components/dialog';
-import { ref, reactive } from 'vue';
-import { jMessage } from './components/message';
-import { jTooltip } from './components/tooltip';
-import JCrumb from './components/crumb';
-import JCalender from './components/calender';
-import JInput from './components/input';
-import JTableform from './components/tableform'
-import jTab from './components/tab/src/TabBar.vue'
-import jTabItem from './components/tab/src/TabItem.vue'
-import { numberLiteralTypeAnnotation } from '@babel/types';
-// 消息框
-const open = (type: string) => {
-  jMessage[type]('This is a message');
-};
-//分页
-const currentPage = ref(1);
-const changePage = (val: number) => {
-  console.log(val);
-  currentPage.value = val;
-  console.log(currentPage.value);
-};
-const pageSize = ref(100);
-const changePageSize = (val: number) => {
-  pageSize.value = val;
-};
-const sizeOptions = [
-  { label: '100条/页', value: 100 },
-  { label: '200条/页', value: 200 },
-  { label: '300条/页', value: 300 },
-];
-//面包屑
-const brandsInfo = reactive([
-  { name: '面包1', showinfo: false },
-  { name: '面包2', showinfo: false },
-  { name: '面包3', showinfo: false },
-  { name: '面包4', showinfo: false },
-  { name: '面包5', showinfo: false },
-]);
-// 下拉选择框
-const selectedValue = ref('');
-const changeSelect = (label: string, value: any) => {
-  selectedValue.value = label;
-};
-const options = [
-  { label: '测试1', value: 1 },
-  { label: '测试2', value: 2 },
-  { label: '试3', value: 3 },
-  { label: '测4', value: 4 },
-  { label: 'ab5', value: 5 },
-];
+  import jButton from './components/button';
+  import jIcon from './components/icon';
+  import jQueryPage from './components/queryPage';
+  import jSelect from './components/select';
+  import jLayout from './components/layout';
+  import jHeader from './components/header';
+  import jContent from './components/content';
+  import jSider from './components/sider';
+  import jFooter from './components/footer';
+  import jDialog from './components/dialog';
+  import { ref, reactive } from 'vue';
+  import { jMessage } from './components/message';
+  import { jTooltip } from './components/tooltip';
+  import JCrumb from './components/crumb';
+  import JCalender from './components/calender';
+  import JInput from './components/input';
+  import JTableform from './components/tableform';
+  import jTab from './components/tab/src/TabBar.vue';
+  import jTabItem from './components/tab/src/TabItem.vue';
+  import { numberLiteralTypeAnnotation } from '@babel/types';
+  // 消息框
+  const open = (type: string) => {
+    jMessage[type]('This is a message');
+  };
+  //分页
+  const currentPage = ref(1);
+  const changePage = (val: number) => {
+    console.log(val);
+    currentPage.value = val;
+    console.log(currentPage.value);
+  };
+  const pageSize = ref(100);
+  const changePageSize = (val: number) => {
+    pageSize.value = val;
+  };
+  const sizeOptions = [
+    { label: '100条/页', value: 100 },
+    { label: '200条/页', value: 200 },
+    { label: '300条/页', value: 300 },
+  ];
+  //面包屑
+  const brandsInfo = reactive([
+    { name: '面包1', showinfo: false },
+    { name: '面包2', showinfo: false },
+    { name: '面包3', showinfo: false },
+    { name: '面包4', showinfo: false },
+    { name: '面包5', showinfo: false },
+  ]);
+  // 下拉选择框
+  const selectedValue = ref({ label: '测试1', value: 1 });
+  const changeSelect = (label: string, value: any) => {
+    selectedValue.value.label = label;
+    selectedValue.value.value = value;
+  };
+  const options = [
+    { label: '测试1', value: 1 },
+    { label: '测试2', value: 2 },
+    { label: '试3', value: 3 },
+    { label: '测4', value: 4 },
+    { label: 'ab5', value: 5 },
+  ];
 
-const inputmessage = ref('');
-const dialogVisible = ref(false);
-const handleClick = () => {
-  dialogVisible.value = true;
-};
-// 对话框 回调
-const handleClose = (done: () => void) => {
-  // dialogVisible.value = false
-  confirm('确认关闭？') && done();
-};
-//tab 页面
-const handleDisabled = (e: any) => {
-  console.log(e.label + '已禁用')
-}
-//表单
-const submitmessage = (a: object) => {
-  alert('姓名：' + a.name + " " + "年龄：" + a.age);
-}
+  const inputmessage = ref('');
+  const dialogVisible = ref(false);
+  const handleClick = () => {
+    dialogVisible.value = true;
+  };
+  // 对话框 回调
+  const handleClose = (done: () => void) => {
+    // dialogVisible.value = false
+    confirm('确认关闭？') && done();
+  };
+  //tab 页面
+  const handleDisabled = (e: any) => {
+    console.log(e.label + '已禁用');
+  };
+  //表单
+  const submitmessage = (a: object) => {
+    alert('姓名：' + a.name + ' ' + '年龄：' + a.age);
+  };
 </script>
 
 <template>
@@ -100,13 +101,23 @@ const submitmessage = (a: object) => {
       </div>
     </div>
     <div class="section">
-      <j-query-page style="width=100%" :current-page="currentPage" :total="2000" :page-size="pageSize" :page-count="5"
-        :border-width-show="true" :size-options="sizeOptions" :item-stlye="{
+      <j-query-page
+        style="width=100%"
+        :current-page="currentPage"
+        :total="2000"
+        :page-size="pageSize"
+        :page-count="5"
+        :border-width-show="true"
+        :size-options="sizeOptions"
+        :item-stlye="{
           width: 30,
           height: 30,
           borderDefaultColor: '#ddd',
           borderStyle: 'dotted',
-        }" @change-page="changePage" @change-page-size="changePageSize"></j-query-page>
+        }"
+        @change-page="changePage"
+        @change-page-size="changePageSize"
+      ></j-query-page>
     </div>
     <div class="section">
       <j-icon name="zoom-in" color="var(--j-color-primary)" size="var(--j-font-size-large)" />
@@ -169,27 +180,52 @@ const submitmessage = (a: object) => {
     <div class="section">
       <div class="tooltip-base-box">
         <div class="row center">
-          <j-tooltip class="box-item" effect="dark" content="Top Center prompts info" placement="top">
+          <j-tooltip
+            class="box-item"
+            effect="dark"
+            content="Top Center prompts info"
+            placement="top"
+          >
             <j-button>top</j-button>
           </j-tooltip>
         </div>
         <div class="row">
-          <j-tooltip class="box-item" effect="dark" content="Left Center prompts info" placement="left">
+          <j-tooltip
+            class="box-item"
+            effect="dark"
+            content="Left Center prompts info"
+            placement="left"
+          >
             <j-button class="mt-3 mb-3">left</j-button>
           </j-tooltip>
-          <j-tooltip class="box-item" effect="dark" content="Right Center prompts info" placement="right">
+          <j-tooltip
+            class="box-item"
+            effect="dark"
+            content="Right Center prompts info"
+            placement="right"
+          >
             <j-button>right</j-button>
           </j-tooltip>
         </div>
         <div class="row center">
-          <j-tooltip class="box-item" effect="dark" content="Bottom Center prompts info" placement="bottom">
+          <j-tooltip
+            class="box-item"
+            effect="dark"
+            content="Bottom Center prompts info"
+            placement="bottom"
+          >
             <j-button>bottom</j-button>
           </j-tooltip>
         </div>
       </div>
     </div>
     <div class="section">
-      <j-select :options="options" type="search" :selected="selectedValue" @change-select="changeSelect">
+      <j-select
+        :options="options"
+        type="search"
+        :selected="selectedValue"
+        @change-select="changeSelect"
+      >
       </j-select>
     </div>
     <div class="section">
@@ -213,81 +249,81 @@ const submitmessage = (a: object) => {
 </template>
 
 <style scoped lang="scss">
-.joy-design {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  position: relative;
-  top: 50px;
-  box-sizing: border-box;
-
-  .section {
+  .joy-design {
+    width: 100%;
+    height: auto;
     display: flex;
-    align-items: center;
-    width: calc(50% - 20px);
-    height: 200px;
-    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
-    box-sizing: border-box;
-    margin: 10px 10px;
-    display: flex;
+    justify-content: left;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px 0;
-    justify-content: center;
-    padding: 50px 20px;
+    position: relative;
+    top: 50px;
+    box-sizing: border-box;
 
-    .j-header,
-    .j-footer,
-    .j-content,
-    .j-sider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .j-header,
-    .j-footer {
-      background-color: rgb(82, 147, 197);
-      // color: var(--el-text-color-primary);
-      text-align: center;
-    }
-
-    .j-sider {
-      background-color: rgb(10, 50, 81);
-      // color: var(--el-text-color-primary);
-      text-align: center;
-    }
-
-    .j-content {
-      background-color: rgb(134, 191, 235);
-      // color: var(--el-text-color-primary);
-      text-align: center;
-      // height: 150px;
-    }
-
-    .tooltip-base-box {
-      width: 600px;
-    }
-
-    .tooltip-base-box .row {
+    .section {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-
-    .tooltip-base-box .center {
+      width: calc(50% - 20px);
+      height: 200px;
+      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+      box-sizing: border-box;
+      margin: 10px 10px;
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-    }
+      padding: 20px 0;
+      justify-content: center;
+      padding: 50px 20px;
 
-    .tooltip-base-box .box-item {
-      margin-top: 10px;
+      .j-header,
+      .j-footer,
+      .j-content,
+      .j-sider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .j-header,
+      .j-footer {
+        background-color: rgb(82, 147, 197);
+        // color: var(--el-text-color-primary);
+        text-align: center;
+      }
+
+      .j-sider {
+        background-color: rgb(10, 50, 81);
+        // color: var(--el-text-color-primary);
+        text-align: center;
+      }
+
+      .j-content {
+        background-color: rgb(134, 191, 235);
+        // color: var(--el-text-color-primary);
+        text-align: center;
+        // height: 150px;
+      }
+
+      .tooltip-base-box {
+        width: 600px;
+      }
+
+      .tooltip-base-box .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .tooltip-base-box .center {
+        justify-content: center;
+      }
+
+      .tooltip-base-box .box-item {
+        margin-top: 10px;
+      }
     }
   }
-}
 
-.dialog-footer button:first-child {
-  margin-right: 10px;
-}
+  .dialog-footer button:first-child {
+    margin-right: 10px;
+  }
 </style>

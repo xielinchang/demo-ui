@@ -12,7 +12,7 @@
         <input
           type="text"
           v-if="props.type != 'search'"
-          v-model="props.selected"
+          v-model="props.selected.label"
           disabled
           :placeholder="props.placeholder"
         />
@@ -20,7 +20,7 @@
         <input
           v-else
           type="text"
-          v-model="props.selected"
+          v-model="props.selected.label"
           @input="searchOptions($event)"
           :placeholder="props.placeholder"
         />
@@ -47,9 +47,9 @@
       <div class="select-options-icon"> </div>
       <div
         :style="{
-          color: props.selected === item.label ? '#21A0FF' : '',
+          color: props.selected.label === item.label ? '#21A0FF' : '',
           // fontWeight不兼容
-          // fontWeight: props.selected === item.label ? 700 : '',
+          // fontWeight: props.selected.label === item.label ? 700 : '',
         }"
         class="options-item"
         v-for="(item, index) in data.itemList"
@@ -109,7 +109,7 @@
   // 监听被选中的值，过滤掉不符合的选项
   watch(
     () => {
-      return props.selected;
+      return props.selected.label;
     },
     (value: any) => {
       if (props.type == 'search') {

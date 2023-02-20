@@ -1,8 +1,17 @@
 export const selectEvent = {
   selectProps: {
     selected: {
-      type: [Number, String],
-      default: null,
+      type: Object as any,
+      default: {
+        label: {
+          type: String,
+          default: '',
+        },
+        value: {
+          type: [String, Number],
+          default: '',
+        },
+      },
       required: true,
     },
     options: {

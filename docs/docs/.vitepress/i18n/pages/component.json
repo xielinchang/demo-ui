@@ -18,6 +18,10 @@
         {
           "link": "/queryPage",
           "text": "queryPage 分页器"
+        },
+        {
+          "link": "/select",
+          "text": "select 下拉选择框"
         }
       ]
     },
