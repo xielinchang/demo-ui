@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .demo-icon {
     .demo-icon-item {
       margin-top: 24px;
