@@ -20,9 +20,10 @@
     flex-direction: row;
     justify-content: space-around;
 }
-
+.vp-doc li + li{
+    margin: 0;
+}
 .crumb {
-
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -30,9 +31,11 @@
     line-height: 30px;
     color: white;
     font-size: 14px;
+
 }
 
 .crumb .singlecrumb {
+    margin: 0;
     margin-right: 5px;
     border: 0.5px rgb(255, 188, 65) solid;
     border-radius: 4px;
