@@ -18,6 +18,9 @@
   import JTableform from './components/tableform';
   import jTab from './components/tab/src/TabBar.vue';
   import jTabItem from './components/tab/src/TabItem.vue';
+  import jNavBar from './components/navBar/src/navBar.vue'
+import jSideBar from './components/sideBar/src/sideBar.vue'
+import jSidebarItem from './components/sideBar/src/sideBarItem.vue'
   import { numberLiteralTypeAnnotation } from '@babel/types';
   // 消息框
   const open = (type: string) => {
@@ -77,6 +80,19 @@
   const submitmessage = (a: object) => {
     alert('姓名：' + a.name + ' ' + '年龄：' + a.age);
   };
+  //navBar
+const handleLeft = () => {
+  console.log('点击左边啦')
+}
+
+const handleRight = () => {
+  console.log('点击右边啦')
+}
+//sideBar
+const activeKey = ref(0)
+const sideBarDisabled = (e: any) => {
+  console.log(e + '  禁用啦')
+}
 </script>
 
 <template>
@@ -242,6 +258,24 @@
         <j-tab-item label="标签二" name="second">标签二内容</j-tab-item>
         <j-tab-item label="标签三" name="third">标签三内容</j-tab-item>
       </j-tab>
+    </div>
+    <div class="section">
+      <j-nav-bar @click-left="handleLeft" @click-right="handleRight" title="标题1" left-text="返回1">
+        <template #left>
+          <j-icon name="arrow-left" style="margin-top:4px;"></j-icon>
+        </template>
+        <template #right>
+          <j-icon name="search" size="16px"></j-icon>
+        </template>
+      </j-nav-bar>
+    </div>
+
+    <div class="section">
+      <j-side-bar v-model:active-key="activeKey" @disabled="sideBarDisabled">
+        <j-sidebar-item title="标签名1"> </j-sidebar-item>
+        <j-sidebar-item title="标签名2"> </j-sidebar-item>
+        <j-sidebar-item title="标签名3" disabled> </j-sidebar-item>
+      </j-side-bar>
     </div>
     <div class="section"> ... </div>
   </div>
