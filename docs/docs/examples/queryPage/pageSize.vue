@@ -12,13 +12,13 @@
     { label: '200条/页', value: 200 },
     { label: '300条/页', value: 300 },
   ];
-  const pageSize = ref(100);
+  const pageSize = ref(5);
 </script>
 <template>
   <div>
     <j-query-page
       style="width=100%"
-      :page-count="6"
+      :page-count="5"
       :current-page="currentPage"
       :total="2000"
       :page-size="pageSize"

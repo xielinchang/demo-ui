@@ -8,7 +8,7 @@ export const queryPageEvent = {
     // 总条目数
     total: {
       type: Number,
-      default: 10,
+      default: 100,
       required: true,
     },
     // 每页显示的条目个数
@@ -20,7 +20,7 @@ export const queryPageEvent = {
     // 页码按钮数量
     pageCount: {
       type: Number,
-      default: 6,
+      default: 5,
       required: true,
     },
     // 分页元素的尺寸
