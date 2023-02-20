@@ -14,7 +14,7 @@ app.use(JSelect);
 
 Select 组件的基本使用
 
-:::demo 基本样式
+:::demo 基本功能
 
 select/basic
 
@@ -22,7 +22,7 @@ select/basic
 
 ## 可搜索
 
-:::demo 显示总的页数
+:::demo 可根据关键字筛选选项
 
 select/search
 

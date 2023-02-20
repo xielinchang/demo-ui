@@ -80,6 +80,9 @@
   });
   onMounted(() => {
     data.itemList = props.options;
+    if (props.type == 'search') {
+      filterData(props.selected.label);
+    }
   });
   // 选择选项
   const selectValue = (item: any) => {
