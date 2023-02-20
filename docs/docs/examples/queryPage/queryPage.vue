@@ -4,6 +4,7 @@
   const changePage = (val: number) => {
     currentPage.value = val;
   };
+  const pageSize = ref(5);
   const changePageSize = (val: number) => {
     pageSize.value = val;
   };
@@ -12,7 +13,6 @@
     { label: '200条/页', value: 200 },
     { label: '300条/页', value: 300 },
   ];
-  const pageSize = ref(5);
 </script>
 <template>
   <div>

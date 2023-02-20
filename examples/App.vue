@@ -26,9 +26,7 @@
   //分页
   const currentPage = ref(1);
   const changePage = (val: number) => {
-    console.log(val);
     currentPage.value = val;
-    console.log(currentPage.value);
   };
   const pageSize = ref(100);
   const changePageSize = (val: number) => {
@@ -107,7 +105,8 @@
         :total="2000"
         :page-size="pageSize"
         :page-count="5"
-        :border-width-show="true"
+        :jumper-show="true"
+        :total-show="true"
         :size-options="sizeOptions"
         :item-stlye="{
           width: 30,

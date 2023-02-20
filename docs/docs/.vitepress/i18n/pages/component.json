@@ -17,11 +17,11 @@
         },
         {
           "link": "/queryPage",
-          "text": "queryPage 分页器"
+          "text": "QueryPage 分页器"
         },
         {
           "link": "/select",
-          "text": "select 下拉选择框"
+          "text": "Select 下拉选择框"
         }
       ]
     },

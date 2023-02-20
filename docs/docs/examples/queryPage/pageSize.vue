@@ -24,6 +24,7 @@
       :page-size="pageSize"
       :size-options="sizeOptions"
       @change-page="changePage"
+      @change-page-size="changePageSize"
     ></j-query-page>
   </div>
 </template>

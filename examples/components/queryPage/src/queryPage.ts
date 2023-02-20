@@ -58,17 +58,11 @@ export const queryPageEvent = {
       },
     },
     btnStyle: {
-      type: Object,
+      type: Object as any,
       default: () => {
         return {
-          color: {
-            type: String,
-            default: '#fff',
-          },
-          background: {
-            type: String,
-            default: '#FD8C01',
-          },
+          color: '#fff',
+          background: '#FD8C01',
         };
       },
     },
@@ -99,7 +93,7 @@ export const queryPageEvent = {
     },
     // 页面大小配置
     sizeOptions: {
-      type: Array,
+      type: Array as any,
       default: [],
     },
   },
