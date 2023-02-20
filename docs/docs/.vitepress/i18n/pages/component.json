@@ -1,0 +1,46 @@
+{
+  "zh": {
+    "basic": {
+      "text": "基础组件",
+      "children": [
+        {
+          "link": "/button",
+          "text": "Button 按钮"
+        },
+        {
+          "link": "/icon",
+          "text": "Icon 图标"
+        },
+        {
+          "link": "/crumb",
+          "text": "Crumb 面包屑"
+        },
+        {
+          "link": "/queryPage",
+          "text": "queryPage 分页器"
+        },
+        {
+          "link": "/select",
+          "text": "select 下拉选择框"
+        }
+      ]
+    },
+    "message": {
+      "text": "消息组件",
+      "children": [
+        {
+          "link": "/message",
+          "text": "Message 消息通知"
+        },
+        {
+          "link": "/dialog",
+          "text": "dialog 对话框"
+        },
+        {
+          "link": "/tooltip",
+          "text": "tooltip 提示框"
+        }
+      ]
+    }
+  }
+}
