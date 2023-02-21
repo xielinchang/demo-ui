@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import jIcon from '../../icon';
+import { createNamespace } from '../../../assets/utils/components';
 const emit = defineEmits(['clickLeft','clickRight'])
 const props = defineProps({
     title: { default: ' ', type: String },
@@ -31,6 +32,11 @@ const clickLeft = ()=>{
 const clickRight = ()=>{
     emit('clickRight')
 }
+// const ns = createNamespace('nav-bar');
+
+defineOptions({
+  name: 'JNavBar',
+});
 </script>
 
 <style lang="scss">

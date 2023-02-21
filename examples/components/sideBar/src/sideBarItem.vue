@@ -19,6 +19,9 @@ const props = defineProps({
     }
 })
 
+defineOptions({
+    name: 'JSideBarItem',
+  });
 </script>
 
 

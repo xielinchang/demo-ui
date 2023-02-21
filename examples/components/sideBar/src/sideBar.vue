@@ -3,8 +3,8 @@
         <div class="tabs-nav-wrap" name="header" ref="navWrap">
             <div class="tabs-inv-bar" :style="barStyle"> </div>
             <div class="side-bar" v-for="(item, index) in data.sidebarList" :key="index" @click="handleClick($event, index)"
-                :class="[{ active: data.current == index }, { 'disabledStyle': findDisabled(index) }]"
-                :style="{ '--margin-bottom': marginBottom + 'px', '--abortColor': abortColor }" @disabled="onDisabled">
+                :class="[{ active: data.current == index }, { disabledStyle: findDisabled(index) }]"
+                :style="{ '--margin-bottom': marginBottom + 'px', '--abortColor': abortColor }" @disabled="onDisabled" @change="change">
                 <span style="padding-left:4px;"> {{ item }}</span>
             </div>
 
@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, useSlots, reactive, nextTick, watch, getCurrentInstance, provide } from 'vue';
 import jIcon from '../../icon';
-const emit = defineEmits(['disabled', 'update:activeKey'])
+const emit = defineEmits(['disabled', 'update:activeKey','change'])
 const slots = useSlots()
 const props = defineProps({
     value: { default: '', type: String },
@@ -68,6 +68,7 @@ const handleClick = (e: any, index: number) => {
     // console.log(e)
     if (!findDisabled(index)) { data.current = index }
     emit('update:activeKey', data.current)
+    emit('change', data.current)
     for (let i = 0; i < data.disabledId.length; i++) {
         if (data.disabledId[i] == index) {
             emit('disabled', index)
@@ -129,6 +130,10 @@ const updateBar = () => {
 watch(() => data.current, () => {
     updateBar()
 })
+
+defineOptions({
+    name: 'jSideBar',
+  });
 </script>
 
 <style lang="scss" scoped>

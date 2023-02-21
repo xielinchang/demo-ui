@@ -30,7 +30,9 @@ const props = defineProps({
         type:Boolean
     }
 })
-
+defineOptions({
+    name: 'JTabItem',
+  });
 </script>
 
 
