@@ -9,9 +9,9 @@
     pageSize.value = val;
   };
   const sizeOptions = [
-    { label: '100条/页', value: 100 },
-    { label: '200条/页', value: 200 },
-    { label: '300条/页', value: 300 },
+    { label: '5条/页', value: 5 },
+    { label: '10条/页', value: 10 },
+    { label: '20条/页', value: 20 },
   ];
 </script>
 <template>

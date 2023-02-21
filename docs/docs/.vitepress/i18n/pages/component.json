@@ -26,6 +26,10 @@
         {
           "link": "/layout",
           "text": "layout 布局容器"
+        },
+        {
+          "link": "/backTop",
+          "text": "backTop 返回顶部"
         }
       ]
     },

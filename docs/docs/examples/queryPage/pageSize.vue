@@ -8,9 +8,9 @@
     pageSize.value = val;
   };
   const sizeOptions = [
-    { label: '100条/页', value: 100 },
-    { label: '200条/页', value: 200 },
-    { label: '300条/页', value: 300 },
+    { label: '5条/页', value: 5 },
+    { label: '10条/页', value: 10 },
+    { label: '20条/页', value: 20 },
   ];
   const pageSize = ref(5);
 </script>
@@ -20,7 +20,7 @@
       style="width=100%"
       :page-count="5"
       :current-page="currentPage"
-      :total="2000"
+      :total="100"
       :page-size="pageSize"
       :size-options="sizeOptions"
       @change-page="changePage"
