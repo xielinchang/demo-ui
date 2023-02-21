@@ -22,6 +22,10 @@
         {
           "link": "/select",
           "text": "Select 下拉选择框"
+        },
+        {
+          "link": "/layout",
+          "text": "layout 布局容器"
         }
       ]
     },
