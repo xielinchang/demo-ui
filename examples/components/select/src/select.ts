@@ -1,10 +1,21 @@
 export const selectEvent = {
   selectProps: {
+    // 被选中的选项
     selected: {
-      type: [Number, String],
-      default: null,
+      type: Object as any,
+      default: {
+        label: {
+          type: String,
+          default: '',
+        },
+        value: {
+          type: [String, Number],
+          default: '',
+        },
+      },
       required: true,
     },
+    // 所有选项
     options: {
       // 解决报item类型错误
       type: Array as any,

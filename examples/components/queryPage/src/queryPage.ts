@@ -8,7 +8,7 @@ export const queryPageEvent = {
     // 总条目数
     total: {
       type: Number,
-      default: 10,
+      default: 100,
       required: true,
     },
     // 每页显示的条目个数
@@ -20,7 +20,7 @@ export const queryPageEvent = {
     // 页码按钮数量
     pageCount: {
       type: Number,
-      default: 6,
+      default: 5,
       required: true,
     },
     // 分页元素的尺寸
@@ -58,17 +58,11 @@ export const queryPageEvent = {
       },
     },
     btnStyle: {
-      type: Object,
+      type: Object as any,
       default: () => {
         return {
-          color: {
-            type: String,
-            default: '#fff',
-          },
-          background: {
-            type: String,
-            default: '#FD8C01',
-          },
+          color: '#fff',
+          background: '#FD8C01',
         };
       },
     },
@@ -99,7 +93,7 @@ export const queryPageEvent = {
     },
     // 页面大小配置
     sizeOptions: {
-      type: Array,
+      type: Array as any,
       default: [],
     },
   },

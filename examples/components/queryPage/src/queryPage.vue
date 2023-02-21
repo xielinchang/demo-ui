@@ -75,9 +75,18 @@
   const props = defineProps(queryPageEvent.queryPageProps);
   const emit = defineEmits(queryPageEvent.queryPageEmit);
   // 选择一页的条目数
-  const selectedValue = ref('100条/页');
+  const selectedValue = ref({
+    label: '',
+    value: 0,
+  });
+  if (props.sizeOptions.length > 0) {
+    selectedValue.value.label = props.sizeOptions[0].label;
+    selectedValue.value.value = props.sizeOptions[0].value;
+    emit('change-page-size', selectedValue.value.value);
+  }
   const changeSelect = (label: string, value: number) => {
-    selectedValue.value = label;
+    selectedValue.value.label = label;
+    selectedValue.value.value = value;
     emit('change-page-size', value);
   };
   // 监听总的页数随页面大小变化

@@ -1,7 +1,7 @@
 {
   "zh": {
     "basic": {
-      "text": "Basic 基础组件",
+      "text": "基础组件",
       "children": [
         {
           "link": "/button",
@@ -17,7 +17,28 @@
         },
         {
           "link": "/queryPage",
-          "text": "queryPage 分页器"
+          "text": "QueryPage 分页器"
+        },
+        {
+          "link": "/select",
+          "text": "Select 下拉选择框"
+        }
+      ]
+    },
+    "message": {
+      "text": "消息组件",
+      "children": [
+        {
+          "link": "/message",
+          "text": "Message 消息通知"
+        },
+        {
+          "link": "/dialog",
+          "text": "dialog 对话框"
+        },
+        {
+          "link": "/tooltip",
+          "text": "tooltip 提示框"
         }
       ]
     }

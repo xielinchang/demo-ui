@@ -65,9 +65,9 @@ queryPage/queryPage
 | 属性 | 说明 | 必须 | 类型 | 接收值 | 默认值 |
 | --- | --- | ---- | --- | --- | --- |
 | currentPage | 当前页数 | 是 | number | — | 1
-| total | 总条目数 | 是 | number | — | 10
+| total | 总条目数 | 是 | number | — | 100
 | pageSize | 每页显示的条目个数 | 是 | number | — | 5 |
-| pageCount | 页码按钮数量 | 是 | number | — | 6 |
+| pageCount | 页码按钮数量 | 是 | number | — | 5 |
 | chooseShow | 是否打开当处于第一页时自动隐藏上一页，处于最后一页时，自动隐藏下一页 | 是 | boolean | — | false |
 | hoverShow | 是否打开鼠标移至...的标题提示，true:打开，false，关闭 | 是 | boolean | — | false
 | jumperShow | 是否打开跳转第几页，true:打开，false，关闭 | 是 | boolean | — | false |
