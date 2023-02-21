@@ -33,7 +33,10 @@ const props = defineProps({
         type: String,
         default: 'red'
     },
-    barWidth: String,
+    barWidth:  {
+        type: Number,
+        default: 4
+    },
     barHeight: {
         type: Number,
         default: 40
@@ -54,7 +57,8 @@ const data = reactive({
 })
 onMounted(() => {
     bar.marginBottom = props.marginBottom
-    bar.barHeight = props.barHeight
+    bar.barWidth= props.barWidth
+    bar.barHeight= props.barHeight
     bar.barColor = props.barColor
     let length = slots.default().length
     let itemData = slots.default()
@@ -87,7 +91,7 @@ const bar = reactive({
 //返回tabbar的样式 ,不是个函数！！！
 const barStyle = computed(() => {
     return {
-        width: `${bar.barWidth}px`,
+        width: `${props.barWidth}px`,
         transform: `translate3d(0px,${bar.barOffset}px,0px)`,
         background: `${bar.barColor}`,
         height: `${bar.barHeight}px`,
@@ -132,7 +136,7 @@ watch(() => data.current, () => {
 })
 
 defineOptions({
-    name: 'jSideBar',
+    name: 'JSideBar',
   });
 </script>
 

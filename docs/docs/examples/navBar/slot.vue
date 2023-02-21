@@ -11,9 +11,9 @@
 
 <script setup lang="ts">
 const handleLeft = () => {
-    console.log('点击左边啦')
+    alert('点击左边啦')
 }
 const handleRight = () => {
-    console.log('点击右边啦')
+    alert('点击右边啦')
 }
 </script>

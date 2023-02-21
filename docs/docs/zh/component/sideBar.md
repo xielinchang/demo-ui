@@ -36,15 +36,14 @@ sideBar/change
 
 ## Api
 
-| 属性         | 说明                         | 类型   | 接收值 | 默认值 |
-| ------------ | ---------------------------- | ------ | ------ | ------ |
-| v-model      | 当前导航项的索引             | number | —      | 0      |
-| fontColor    | 用来表示高亮的时候的文字颜色 | string | —      | —      |
-| fontColor    | 用来表示高亮的时候的文字颜色 | string | —      | —      |
-| barColor     | 下滑bar的颜色                | string | info   |        |
-| barWidth     | 下滑bar的宽度                | string | info   |        |
-| marginBottom | 设置相邻tab之间的距离        | string | info   |        |
-| abortColor   | 禁用颜色                     | string | —      |        |
+| 属性         | 说明                         | 类型   |  默认值 |
+| ------------ | ---------------------------- | ------ | ------ |
+| v-model      | 当前导航项的索引             | number |  0      |
+| fontColor    | 用来表示高亮的时候的文字颜色 | string | 4   |
+| barColor     | 下滑bar的颜色                | string |   red     |
+| barWidth     | 下滑bar的宽度                | number |   4      |
+| marginBottom | 设置相邻tab之间的距离        | string |   0     |
+| abortColor   | 禁用颜色                     | string |   grey      |
 
 ## Sidebar Events
 | 事件名   | 说明              | 回调参数                |

@@ -36,13 +36,13 @@ tab/change
 
 ## Api
 
-| 属性         | 说明                         | 类型   | 接收值 | 默认值 |
-| ------------ | ---------------------------- | ------ | ------ | ------ |
-| curActive      | 当前导航项的索引             | number | —      | 0      |
-| fontColor    | 用来表示高亮的时候的文字颜色 | string | —      | —      |
-| barColor     | 下滑bar的颜色                | string | info   |        |
-| barWidth     | 下滑bar的宽度                | string | info   |        |
-| marginRight | 设置相邻tab之间的距离        | string | info   |        |
+| 属性        | 说明                         | 类型   | 默认值 |
+| ----------- | ---------------------------- | ------ | ------ | 
+| curActive   | 当前导航项的索引             | number | 0      |
+| fontColor   | 用来表示高亮的时候的文字颜色 | string |   skyblue     |
+| barColor    | 下滑bar的颜色                | string |   red     |
+| barHeight    | 下滑bar的宽度                | string |  3px      |
+| marginRight | 设置相邻tab之间的距离        | string |    16    |
 
 
 ## Sidebar Events
