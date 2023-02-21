@@ -6,7 +6,7 @@
             <div class="tabs-tab" v-for="(item, index) in data.tabList" :key="index"
                 :style="{ '--active-color': fontColor,'--margin-right':marginRight+'px' }"
                 :class="[{ 'active': data.current === item.name }, { 'disabledStyle':findDisabled(index) }]"
-                @click="handleCurrent(index, item)" @disabled="onDisabled" ref="tabItem">
+                @click="handleCurrent(index, item)" @disabled="onDisabled" ref="tabItem" @change="change">
                 {{ item.label }}
             </div>
 
@@ -74,7 +74,7 @@ onMounted(() => {
     }
     data.current = props.curActive 
 })
-const emit = defineEmits(['disabled'])
+const emit = defineEmits(['disabled','change'])
 
 const navData = reactive({
     name: '',
@@ -103,6 +103,7 @@ const handleCurrent = (index: number, item: any) => {
             emit('disabled', item)
         }
     }
+    emit('change',item)
 }
 
 const findDisabled = (e:number)=>{
@@ -158,41 +159,10 @@ const updateBar = () => {
 watch(() => data.current, () => {
     updateBar()
 })
-
+defineOptions({
+    name: 'JTab',
+  });
 </script>
 <style scoped lang='scss'>
-.tabs-nav-wrap {
-    position: relative;
-  
-}
-
-.tabs-tab {
-    position: relative;
-    display: inline-block;
-    padding: 8px 16px;
-    cursor: pointer;
-    margin-right: var(--margin-right);
-}
-
-.tabs-inv-bar {
-    position: absolute;
-    left: 0px;
-    bottom: 0;
-    transition: transform .2s ease-in-out;;
-    border-radius: 3px;
-}
-
-.active {
-    // transition: all 0.1s linear;
-    --active-color: black;
-    color: var(--active-color);
-}
-
-.disabledStyle {
-    color: grey;
-}
-
-.item-content {
-    padding-top: 10px;
-}
+@import './tab.scss'
 </style>

@@ -1,11 +1,12 @@
-import { jButton,jButtonGroup, jIcon, jCrumb,JQueryPage, jMessage, jTooltip, jDialog,JSelect } from '@joy'
+import { jButton,jButtonGroup, jIcon, jCrumb,JQueryPage, jMessage, jTooltip, jDialog, JSelect,JLayout,JHeader,JSider,JContent,JFooter,JNavBar,JSideBar,JSidebarItem,JTab,JTabItem } from '@joy'
+// import { JLayout } from "../../../../examples/components"
 import { define } from '../utils/types'
 import type { Theme as ThemeType } from 'vitepress'
 import IconList from '../../examples/icon/IconList.vue'
 
 import { globals } from '../vitepress'
 
-const components = {jButton,jButtonGroup, jIcon, jCrumb,JQueryPage, jMessage, jTooltip, jDialog,JSelect}
+const components = {jButton,jButtonGroup, jIcon, jCrumb,JQueryPage, jMessage, jTooltip, jDialog, JSelect,JLayout,JHeader,JSider,JContent,JFooter,JNavBar,JSideBar,JSidebarItem,JTab,JTabItem}
 import '../../../../examples/assets/scss/index.scss';
 
 

@@ -22,6 +22,10 @@
         {
           "link": "/select",
           "text": "Select 下拉选择框"
+        },
+        {
+          "link": "/layout",
+          "text": "layout 布局容器"
         }
       ]
     },
@@ -39,6 +43,21 @@
         {
           "link": "/tooltip",
           "text": "tooltip 提示框"
+        }
+      ]
+    },
+    "guide": {
+      "text": "导航组件",
+      "children": [
+        {
+          "link": "/navBar",
+          "text": "navbar导航"
+        }, {
+          "link": "/tab",
+          "text": "Tab导航"
+        }, {
+          "link": "/sideBar",
+          "text": "sideBar导航"
         }
       ]
     }
