@@ -47,6 +47,12 @@ const brandsInfo = reactive([
   { name: '面包4', showinfo: false },
   { name: '面包5', showinfo: false },
 ]);
+const downLoadCrumb=(brand)=>{
+
+}
+const loadcrumb=(brand)=>{
+
+}
 // 下拉选择框
 const selectedValue = ref('');
 const changeSelect = (label: string, value: any) => {
@@ -59,8 +65,9 @@ const options = [
   { label: '测4', value: 4 },
   { label: 'ab5', value: 5 },
 ];
-
-const inputmessage = ref('');
+const submitinputcontent=(a)=>{
+  
+}
 const dialogVisible = ref(false);
 const handleClick = () => {
   dialogVisible.value = true;
@@ -164,7 +171,7 @@ const submitmessage = (a: object) => {
       <j-button type="primary" @click="open('loading')">加载中</j-button>
     </div>
     <div class="section">
-      <j-crumb :brandsInfo="brandsInfo"></j-crumb>
+      <j-crumb :brandsInfo="brandsInfo" @loadcrumb="loadcrumb" @downLoadCrumb="downLoadCrumb"></j-crumb>
     </div>
     <div class="section">
       <div class="tooltip-base-box">
@@ -196,7 +203,7 @@ const submitmessage = (a: object) => {
       <j-calender></j-calender>
     </div>
     <div class="section">
-      <j-input :inputmessage="inputmessage"></j-input>
+      <j-input @submitinputcontent="submitinputcontent"></j-input>
     </div>
     <div class="section">
       <j-tableform @submitmessage="submitmessage"></j-tableform>
