@@ -1,0 +1,9 @@
+<template>
+    <div>
+        <j-layout>
+            <j-header>header</j-header>
+            <j-content>content</j-content>
+            <j-footer>footer</j-footer>
+        </j-layout>
+    </div>
+</template>
