@@ -1,6 +1,6 @@
 <template>
     <div style=" display: flex; justify-content: space-around;">
-        <j-side-bar v-model:active-key="activeKey" barColor="skyblue" barWidth="6">
+        <j-side-bar v-model:active-key="activeKey" barColor="skyblue">
             <j-sidebar-item title="标签名1"> </j-sidebar-item>
             <j-sidebar-item title="标签名2"> </j-sidebar-item>
             <j-sidebar-item title="标签名3"> </j-sidebar-item>
