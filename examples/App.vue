@@ -1,7 +1,7 @@
 <script setup lang="ts" name="">
   import jButton from './components/button';
   import jIcon from './components/icon';
-  import jQueryPage from './components/queryPage';
+  import JQueryPage from './components/queryPage';
   import jSelect from './components/select';
   import jLayout from './components/layout';
   import jHeader from './components/header';
@@ -18,6 +18,7 @@
   import JTableform from './components/tableform';
   import jTab from './components/tab/src/TabBar.vue';
   import jTabItem from './components/tab/src/TabItem.vue';
+  import JBackTop from './components/backTop';
   import { numberLiteralTypeAnnotation } from '@babel/types';
   // 消息框
   const open = (type: string) => {
@@ -244,6 +245,7 @@
       </j-tab>
     </div>
     <div class="section"> ... </div>
+    <j-back-top></j-back-top>
   </div>
 </template>
 
