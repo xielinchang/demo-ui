@@ -2,14 +2,14 @@
   <div class="counter">
     <div
       class="reduce"
-      :class="props.minNum == currentNum.value ? 'min' : ''"
+      :class="props.minNum >= currentNum.value ? 'min' : ''"
       @click="reduceCount()"
     >
       <j-icon name="minus"></j-icon>
     </div>
     <span v-if="props.type == 'default'" class="number">{{ currentNum.value }}</span>
     <input v-else type="text" v-model="currentNum.value" />
-    <div class="add" :class="props.maxNum == currentNum.value ? 'max' : ''" @click="addCount()">
+    <div class="add" :class="props.maxNum <= currentNum.value ? 'max' : ''" @click="addCount()">
       <j-icon name="plus"></j-icon>
     </div>
   </div>

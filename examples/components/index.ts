@@ -16,3 +16,4 @@ export * from './sideBar';
 export * from './tab';
 export * from './backTop';
 export * from './card';
+export * from './counter';
