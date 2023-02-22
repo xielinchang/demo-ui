@@ -18,12 +18,12 @@ hero:
 
 features:
   - icon: ⚡️
-    title: 这是一个闪电图标
-    details: wawawa
+    title: Vue3+TypeScript
+    details: JoyDesign是Vue3的组件库。用TypeScript编写。
   - icon: 🖖
-    title: 这是一个手掌图标
-    details: good...
+    title: 更友好的渲染
+    details: 极少的代码量，极简配置项。
   - icon: 🛠️
-    title: 这是一个修理图标
-    details: cocococo
+    title: 更快的响应
+    details: 配合vue3的composition API，更快的相应。
 ---
