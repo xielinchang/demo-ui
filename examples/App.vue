@@ -19,6 +19,7 @@
   import jTab from './components/tab/src/TabBar.vue';
   import jTabItem from './components/tab/src/TabItem.vue';
   import JBackTop from './components/backTop';
+  import JCounter from './components/counter';
   import { numberLiteralTypeAnnotation } from '@babel/types';
   // 消息框
   const open = (type: string) => {
@@ -91,6 +92,11 @@
   const activeKey = ref(0);
   const sideBarDisabled = (e: any) => {
     console.log(e + '  禁用啦');
+  };
+  // 计数器
+  const currentNum = ref(20);
+  const changeCount = (e: number) => {
+    console.log(e);
   };
 </script>
 
@@ -281,6 +287,10 @@
         <j-sidebar-item title="标签名2"> </j-sidebar-item>
         <j-sidebar-item title="标签名3" disabled> </j-sidebar-item>
       </j-side-bar>
+    </div>
+    <div class="section">
+      <j-counter :value="currentNum" :min-num="10" :max-num="999" @change-count="changeCount">
+      </j-counter>
     </div>
     <div class="section"> ... </div>
     <j-back-top type="round" direction="right" color="#FF6000"></j-back-top>
