@@ -51,8 +51,9 @@
 
   .nav-box {
     width: 200px;
+    margin: 0 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     .left,
     .right {
       text-align: center;
