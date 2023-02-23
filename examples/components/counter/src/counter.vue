@@ -16,7 +16,7 @@
 </template>
 <script setup lang="ts" name="">
   import { counterEvent } from './counter';
-  import { ref, reactive, onMounted } from 'vue';
+  import { reactive, onMounted } from 'vue';
   import jIcon from '../../icon';
   const props = defineProps(counterEvent.counterProps);
   const emit = defineEmits(counterEvent.counterEmit);

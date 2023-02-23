@@ -4,8 +4,9 @@
 }
 
 .nav-box {
+    margin: 0 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     .left,.right{
         text-align: center;
         display: flex;
