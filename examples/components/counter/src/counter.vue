@@ -8,7 +8,7 @@
       <j-icon name="minus"></j-icon>
     </div>
     <span v-if="props.type == 'default'" class="number">{{ currentNum.value }}</span>
-    <input v-else type="text" v-model="currentNum.value" />
+    <input @blur="judgeInput($event)" v-else type="text" v-model="currentNum.value" />
     <div class="add" :class="props.maxNum <= currentNum.value ? 'max' : ''" @click="addCount()">
       <j-icon name="plus"></j-icon>
     </div>
@@ -35,6 +35,16 @@
   const addCount = () => {
     if (currentNum.value < props.maxNum) {
       currentNum.value++;
+      emit('change-count', currentNum.value);
+    }
+  };
+  const judgeInput = (e: any) => {
+    console.log(e.target.value);
+    if (e.target.value <= props.minNum) {
+      currentNum.value = props.minNum;
+      emit('change-count', currentNum.value);
+    } else if (e.target.value >= props.maxNum) {
+      currentNum.value = props.maxNum;
       emit('change-count', currentNum.value);
     }
   };
